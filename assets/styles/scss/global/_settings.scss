@@ -1,0 +1,91 @@
+// assets/styles/scss/global/_settings.scss
+@charset "UTF-8";
+
+// Colors
+$white: #fefefe;
+$black: #0a0a0a;
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$primary-color: #1779ba;
+$primary-hover: rgb(21.85, 114.95, 176.7);
+$secondary-color: #767676;
+$success-color: #3adb76;
+$warning-color: #ffae00;
+$alert-color: #cc4b37;
+$transparent: transparent;
+$shadow-gray: rgba(10, 10, 10, 0.2);
+$shadow-primary: rgba(23, 121, 186, 0.5);
+$table-stripe: rgb(241.3, 241.3, 241.3);
+
+// Fonts
+$body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$monospace-font-family: monospace, monospace;
+
+// Font Sizes
+$global-font-size: 100%;
+$small-font-size: 80%;
+$tiny-font-size: 75%;
+$h1-font-size: 2em;
+$h2-font-size: 1.5em;
+$h3-font-size: 1.17em;
+$h4-font-size: 1em;
+$h5-font-size: 0.83em;
+$h6-font-size: 0.67em;
+$button-font-size: 0.9rem;
+$tabs-font-size: 0.75rem;
+$tooltip-font-size: 80%;
+$switch-small-font-size: 0.75rem;
+$switch-large-font-size: 1rem;
+
+// Line Heights
+$global-line-height: 1.5;
+$button-line-height: 1;
+
+// Spacing
+$global-margin: 1rem;
+$global-padding: 0.625rem;
+$global-padding-medium: 0.9375rem;
+$grid-container-width: 75rem;
+$top-bar-padding: 0.5rem;
+$header-margin-top: 0;
+$header-margin-bottom: 0.67em;
+$paragraph-margin-bottom: $global-margin;
+$small-margin-bottom: 0.5rem;
+
+// Radius
+$global-radius: 0;
+
+// Shadows
+$thumbnail-shadow: 0 0 0 1px $shadow-gray;
+$thumbnail-hover-shadow: 0 0 6px 1px $shadow-primary;
+
+// Breakpoints
+$small-breakpoint: 0em;
+$medium-breakpoint: 40em;
+$large-breakpoint: 64em;
+$xlarge-breakpoint: 75em;
+$xxlarge-breakpoint: 90em;
+$print-breakpoint: print;
+$screen-breakpoint: screen;
+
+// Grid
+$grid-column-count: 12;
+$grid-gutter: $global-padding;
+$grid-gutter-medium: $global-padding-medium;
+
+// Alignment
+$align-start: flex-start;
+$align-end: flex-end;
+$align-center: center;
+$align-stretch: stretch;
+$justify-start: flex-start;
+$justify-end: flex-end;
+$justify-center: center;
+$justify-space-between: space-between;
+$justify-space-around: space-around;
+
+// Typography
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+$font-weight-light: 300; 

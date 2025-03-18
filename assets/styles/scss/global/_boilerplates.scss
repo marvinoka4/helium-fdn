@@ -1,0 +1,4690 @@
+// assets/styles/scss/global/_boilerplates.scss (Chunk 1)
+@use '../util/' as u;
+@use "sass:color";
+@use "sass:math";
+@use 'settings' as global;
+
+/**
+ * Foundation for Sites (Customized)
+ * Version 6.9.0
+ * https://get.foundation
+ * Licensed under MIT Open Source
+ */
+
+
+ // Base Styles and Normalize
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .reveal.large, .reveal.small, .reveal.tiny, .reveal {
+    right: auto;
+    left: auto;
+    margin: 0 auto;
+  }
+}
+
+/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+html {
+  line-height: global.$global-line-height;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: global.$h1-font-size;
+  margin: 0.67em 0;
+}
+
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+pre {
+  font-family: global.$monospace-font-family;
+  font-size: 1em;
+}
+
+a {
+  background-color: global.$transparent;
+}
+
+abbr[title] {
+  border-bottom: 0;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+  font-family: global.$monospace-font-family;
+  font-size: 1em;
+}
+
+small {
+  font-size: global.$small-font-size;
+}
+
+sub,
+sup {
+  font-size: global.$tiny-font-size;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: global.$global-line-height;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type=checkbox],
+[type=radio] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+[data-whatintent=mouse] *, [data-whatintent=mouse] *:focus,
+[data-whatintent=touch] *,
+[data-whatintent=touch] *:focus,
+[data-whatinput=mouse] *,
+[data-whatinput=mouse] *:focus,
+[data-whatinput=touch] *,
+[data-whatinput=touch] *:focus {
+  outline: none;
+}
+
+[draggable=false] {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+.foundation-mq {
+  font-family: "small=global.$small-breakpoint&medium=global.$medium-breakpoint&large=global.$large-breakpoint&xlarge=global.$xlarge-breakpoint&xxlarge=global.$xxlarge-breakpoint";
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: global.$global-font-size;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: global.$white;
+  font-family: global.$body-font-family;
+  font-weight: normal;
+  line-height: global.$global-line-height;
+  color: global.$black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
+
+// Grid System
+
+.grid-x {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.grid-y {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.grid-frame {
+  overflow: hidden;
+  position: relative;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100vw;
+}
+
+.cell {
+  flex: 0 0 auto;
+  min-height: 0px;
+  min-width: 0px;
+  width: 100%;
+}
+.cell.auto { flex: 1 1 0px; }
+.cell.shrink { flex: 0 0 auto; width: auto; }
+
+.grid-x > .auto, .grid-x > .shrink { width: auto; }
+
+.grid-x > .small-shrink, .grid-x > .small-full,
+.grid-x > .small-1, .grid-x > .small-2, .grid-x > .small-3,
+.grid-x > .small-4, .grid-x > .small-5, .grid-x > .small-6,
+.grid-x > .small-7, .grid-x > .small-8, .grid-x > .small-9,
+.grid-x > .small-10, .grid-x > .small-11, .grid-x > .small-12 {
+  flex: 0 0 auto;
+}
+
+.grid-x > .small-1 { width: calc(100% * 1 / global.$grid-column-count); }
+.grid-x > .small-2 { width: calc(100% * 2 / global.$grid-column-count); }
+.grid-x > .small-3 { width: calc(100% * 3 / global.$grid-column-count); }
+.grid-x > .small-4 { width: calc(100% * 4 / global.$grid-column-count); }
+.grid-x > .small-5 { width: calc(100% * 5 / global.$grid-column-count); }
+.grid-x > .small-6 { width: calc(100% * 6 / global.$grid-column-count); }
+.grid-x > .small-7 { width: calc(100% * 7 / global.$grid-column-count); }
+.grid-x > .small-8 { width: calc(100% * 8 / global.$grid-column-count); }
+.grid-x > .small-9 { width: calc(100% * 9 / global.$grid-column-count); }
+.grid-x > .small-10 { width: calc(100% * 10 / global.$grid-column-count); }
+.grid-x > .small-11 { width: calc(100% * 11 / global.$grid-column-count); }
+.grid-x > .small-12 { width: calc(100% * 12 / global.$grid-column-count); }
+.grid-x > .small-full { width: 100%; }
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-x > .medium-shrink, .grid-x > .medium-full,
+  .grid-x > .medium-1, .grid-x > .medium-2, .grid-x > .medium-3,
+  .grid-x > .medium-4, .grid-x > .medium-5, .grid-x > .medium-6,
+  .grid-x > .medium-7, .grid-x > .medium-8, .grid-x > .medium-9,
+  .grid-x > .medium-10, .grid-x > .medium-11, .grid-x > .medium-12 {
+    flex: 0 0 auto;
+  }
+  .grid-x > .medium-auto { flex: 1 1 0px; width: auto; }
+  .grid-x > .medium-shrink { width: auto; }
+  .grid-x > .medium-1 { width: calc(100% * 1 / global.$grid-column-count); }
+  .grid-x > .medium-2 { width: calc(100% * 2 / global.$grid-column-count); }
+  .grid-x > .medium-3 { width: calc(100% * 3 / global.$grid-column-count); }
+  .grid-x > .medium-4 { width: calc(100% * 4 / global.$grid-column-count); }
+  .grid-x > .medium-5 { width: calc(100% * 5 / global.$grid-column-count); }
+  .grid-x > .medium-6 { width: calc(100% * 6 / global.$grid-column-count); }
+  .grid-x > .medium-7 { width: calc(100% * 7 / global.$grid-column-count); }
+  .grid-x > .medium-8 { width: calc(100% * 8 / global.$grid-column-count); }
+  .grid-x > .medium-9 { width: calc(100% * 9 / global.$grid-column-count); }
+  .grid-x > .medium-10 { width: calc(100% * 10 / global.$grid-column-count); }
+  .grid-x > .medium-11 { width: calc(100% * 11 / global.$grid-column-count); }
+  .grid-x > .medium-12 { width: calc(100% * 12 / global.$grid-column-count); }
+  .grid-x > .medium-full { width: 100%; }
+}
+
+@media print, screen and (min-width: global.$large-breakpoint) {
+  .grid-x > .large-shrink, .grid-x > .large-full,
+  .grid-x > .large-1, .grid-x > .large-2, .grid-x > .large-3,
+  .grid-x > .large-4, .grid-x > .large-5, .grid-x > .large-6,
+  .grid-x > .large-7, .grid-x > .large-8, .grid-x > .large-9,
+  .grid-x > .large-10, .grid-x > .large-11, .grid-x > .large-12 {
+    flex: 0 0 auto;
+  }
+  .grid-x > .large-auto { flex: 1 1 0px; width: auto; }
+  .grid-x > .large-shrink { width: auto; }
+  .grid-x > .large-1 { width: calc(100% * 1 / global.$grid-column-count); }
+  .grid-x > .large-2 { width: calc(100% * 2 / global.$grid-column-count); }
+  .grid-x > .large-3 { width: calc(100% * 3 / global.$grid-column-count); }
+  .grid-x > .large-4 { width: calc(100% * 4 / global.$grid-column-count); }
+  .grid-x > .large-5 { width: calc(100% * 5 / global.$grid-column-count); }
+  .grid-x > .large-6 { width: calc(100% * 6 / global.$grid-column-count); }
+  .grid-x > .large-7 { width: calc(100% * 7 / global.$grid-column-count); }
+  .grid-x > .large-8 { width: calc(100% * 8 / global.$grid-column-count); }
+  .grid-x > .large-9 { width: calc(100% * 9 / global.$grid-column-count); }
+  .grid-x > .large-10 { width: calc(100% * 10 / global.$grid-column-count); }
+  .grid-x > .large-11 { width: calc(100% * 11 / global.$grid-column-count); }
+  .grid-x > .large-12 { width: calc(100% * 12 / global.$grid-column-count); }
+  .grid-x > .large-full { width: 100%; }
+}
+
+.grid-y > .auto, .grid-y > .shrink { height: auto; }
+
+.grid-y > .small-shrink, .grid-y > .small-full,
+.grid-y > .small-1, .grid-y > .small-2, .grid-y > .small-3,
+.grid-y > .small-4, .grid-y > .small-5, .grid-y > .small-6,
+.grid-y > .small-7, .grid-y > .small-8, .grid-y > .small-9,
+.grid-y > .small-10, .grid-y > .small-11, .grid-y > .small-12 {
+  flex: 0 0 auto;
+}
+
+.grid-y > .small-1 { height: calc(100% * 1 / global.$grid-column-count); }
+.grid-y > .small-2 { height: calc(100% * 2 / global.$grid-column-count); }
+.grid-y > .small-3 { height: calc(100% * 3 / global.$grid-column-count); }
+.grid-y > .small-4 { height: calc(100% * 4 / global.$grid-column-count); }
+.grid-y > .small-5 { height: calc(100% * 5 / global.$grid-column-count); }
+.grid-y > .small-6 { height: calc(100% * 6 / global.$grid-column-count); }
+.grid-y > .small-7 { height: calc(100% * 7 / global.$grid-column-count); }
+.grid-y > .small-8 { height: calc(100% * 8 / global.$grid-column-count); }
+.grid-y > .small-9 { height: calc(100% * 9 / global.$grid-column-count); }
+.grid-y > .small-10 { height: calc(100% * 10 / global.$grid-column-count); }
+.grid-y > .small-11 { height: calc(100% * 11 / global.$grid-column-count); }
+.grid-y > .small-12 { height: calc(100% * 12 / global.$grid-column-count); }
+.grid-y > .small-full { height: 100%; }
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-y > .medium-shrink, .grid-y > .medium-full,
+  .grid-y > .medium-1, .grid-y > .medium-2, .grid-y > .medium-3,
+  .grid-y > .medium-4, .grid-y > .medium-5, .grid-y > .medium-6,
+  .grid-y > .medium-7, .grid-y > .medium-8, .grid-y > .medium-9,
+  .grid-y > .medium-10, .grid-y > .medium-11, .grid-y > .medium-12 {
+    flex: 0 0 auto;
+  }
+  .grid-y > .medium-auto { flex: 1 1 0px; height: auto; }
+  .grid-y > .medium-shrink { height: auto; }
+  .grid-y > .medium-1 { height: calc(100% * 1 / global.$grid-column-count); }
+  .grid-y > .medium-2 { height: calc(100% * 2 / global.$grid-column-count); }
+  .grid-y > .medium-3 { height: calc(100% * 3 / global.$grid-column-count); }
+  .grid-y > .medium-4 { height: calc(100% * 4 / global.$grid-column-count); }
+  .grid-y > .medium-5 { height: calc(100% * 5 / global.$grid-column-count); }
+  .grid-y > .medium-6 { height: calc(100% * 6 / global.$grid-column-count); }
+  .grid-y > .medium-7 { height: calc(100% * 7 / global.$grid-column-count); }
+  .grid-y > .medium-8 { height: calc(100% * 8 / global.$grid-column-count); }
+  .grid-y > .medium-9 { height: calc(100% * 9 / global.$grid-column-count); }
+  .grid-y > .medium-10 { height: calc(100% * 10 / global.$grid-column-count); }
+  .grid-y > .medium-11 { height: calc(100% * 11 / global.$grid-column-count); }
+  .grid-y > .medium-12 { height: calc(100% * 12 / global.$grid-column-count); }
+  .grid-y > .medium-full { height: 100%; }
+}
+
+@media print, screen and (min-width: global.$large-breakpoint) {
+  .grid-y > .large-shrink, .grid-y > .large-full,
+  .grid-y > .large-1, .grid-y > .large-2, .grid-y > .large-3,
+  .grid-y > .large-4, .grid-y > .large-5, .grid-y > .large-6,
+  .grid-y > .large-7, .grid-y > .large-8, .grid-y > .large-9,
+  .grid-y > .large-10, .grid-y > .large-11, .grid-y > .large-12 {
+    flex: 0 0 auto;
+  }
+  .grid-y > .large-auto { flex: 1 1 0px; height: auto; }
+  .grid-y > .large-shrink { height: auto; }
+  .grid-y > .large-1 { height: calc(100% * 1 / global.$grid-column-count); }
+  .grid-y > .large-2 { height: calc(100% * 2 / global.$grid-column-count); }
+  .grid-y > .large-3 { height: calc(100% * 3 / global.$grid-column-count); }
+  .grid-y > .large-4 { height: calc(100% * 4 / global.$grid-column-count); }
+  .grid-y > .large-5 { height: calc(100% * 5 / global.$grid-column-count); }
+  .grid-y > .large-6 { height: calc(100% * 6 / global.$grid-column-count); }
+  .grid-y > .large-7 { height: calc(100% * 7 / global.$grid-column-count); }
+  .grid-y > .large-8 { height: calc(100% * 8 / global.$grid-column-count); }
+  .grid-y > .large-9 { height: calc(100% * 9 / global.$grid-column-count); }
+  .grid-y > .large-10 { height: calc(100% * 10 / global.$grid-column-count); }
+  .grid-y > .large-11 { height: calc(100% * 11 / global.$grid-column-count); }
+  .grid-y > .large-12 { height: calc(100% * 12 / global.$grid-column-count); }
+  .grid-y > .large-full { height: 100%; }
+}
+
+.grid-padding-x .grid-padding-x {
+  margin-right: -(global.$grid-gutter);
+  margin-left: -(global.$grid-gutter);
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-padding-x .grid-padding-x {
+    margin-right: -(global.$grid-gutter-medium);
+    margin-left: -(global.$grid-gutter-medium);
+  }
+}
+
+.grid-container {
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+}
+@media print, screen and (min-width: 40em) {
+    .grid-container {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem;
+    }
+}
+.grid-container.fluid {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+}
+@media print, screen and (min-width: 40em) {
+    .grid-container.fluid {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem;
+    }
+}
+.grid-container.full {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.grid-container:not(.full) > .grid-padding-x {
+  margin-right: -(global.$grid-gutter);
+  margin-left: -(global.$grid-gutter);
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-container:not(.full) > .grid-padding-x {
+    margin-right: -(global.$grid-gutter-medium);
+    margin-left: -(global.$grid-gutter-medium);
+  }
+}
+
+.grid-padding-x > .cell {
+  padding-right: global.$grid-gutter;
+  padding-left: global.$grid-gutter;
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-padding-x > .cell {
+    padding-right: global.$grid-gutter-medium;
+    padding-left: global.$grid-gutter-medium;
+  }
+}
+
+.grid-padding-y .grid-padding-y {
+  margin-top: -(global.$grid-gutter);
+  margin-bottom: -(global.$grid-gutter);
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-padding-y .grid-padding-y {
+    margin-top: -(global.$grid-gutter-medium);
+    margin-bottom: -(global.$grid-gutter-medium);
+  }
+}
+
+.grid-padding-y > .cell {
+  padding-top: global.$grid-gutter;
+  padding-bottom: global.$grid-gutter;
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-padding-y > .cell {
+    padding-top: global.$grid-gutter-medium;
+    padding-bottom: global.$grid-gutter-medium;
+  }
+}
+
+.grid-margin-x {
+  margin-left: -(global.$grid-gutter);
+  margin-right: -(global.$grid-gutter);
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-margin-x {
+    margin-left: -(global.$grid-gutter-medium);
+    margin-right: -(global.$grid-gutter-medium);
+  }
+}
+
+.grid-margin-x {
+  flex-wrap: wrap;
+}
+.grid-margin-x > .cell {
+  margin-left: global.$grid-gutter;
+  margin-right: global.$grid-gutter;
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-margin-x > .cell {
+    margin-left: global.$grid-gutter-medium;
+    margin-right: global.$grid-gutter-medium;
+  }
+}
+.grid-margin-x > .small-1 { width: calc(8.33333% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-2 { width: calc(16.66667% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-3 { width: calc(25% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-4 { width: calc(33.33333% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-5 { width: calc(41.66667% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-6 { width: calc(50% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-7 { width: calc(58.33333% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-8 { width: calc(66.66667% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-9 { width: calc(75% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-10 { width: calc(83.33333% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-11 { width: calc(91.66667% - global.$grid-gutter * 2); }
+.grid-margin-x > .small-12 { width: calc(100% - global.$grid-gutter * 2); }
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-margin-x > .medium-1 { width: calc(8.33333% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-2 { width: calc(16.66667% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-3 { width: calc(25% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-4 { width: calc(33.33333% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-5 { width: calc(41.66667% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-6 { width: calc(50% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-7 { width: calc(58.33333% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-8 { width: calc(66.66667% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-9 { width: calc(75% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-10 { width: calc(83.33333% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-11 { width: calc(91.66667% - global.$grid-gutter-medium * 2); }
+  .grid-margin-x > .medium-12 { width: calc(100% - global.$grid-gutter-medium * 2); }
+}
+
+.grid-margin-y {
+  margin-top: -(global.$grid-gutter);
+  margin-bottom: -(global.$grid-gutter);
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-margin-y {
+    margin-top: -(global.$grid-gutter-medium);
+    margin-bottom: -(global.$grid-gutter-medium);
+  }
+}
+
+.grid-margin-y {
+  flex-wrap: wrap;
+}
+.grid-margin-y > .cell {
+  margin-top: global.$grid-gutter;
+  margin-bottom: global.$grid-gutter;
+}
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .grid-margin-y > .cell {
+    margin-top: global.$grid-gutter-medium;
+    margin-bottom: global.$grid-gutter-medium;
+  }
+}
+
+
+// Alignment and Visibility
+
+.align-left { justify-content: global.$justify-start; }
+.align-right { justify-content: global.$justify-end; }
+.align-center { justify-content: global.$justify-center; }
+.align-justify { justify-content: global.$justify-space-between; }
+.align-spaced { justify-content: global.$justify-space-around; }
+.align-top { align-items: global.$align-start; }
+.align-bottom { align-items: global.$align-end; }
+.align-middle { align-items: global.$align-center; }
+.align-stretch { align-items: global.$align-stretch; }
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-align-left { justify-content: global.$justify-start; }
+  .medium-align-right { justify-content: global.$justify-end; }
+  .medium-align-center { justify-content: global.$justify-center; }
+  .medium-align-justify { justify-content: global.$justify-space-between; }
+  .medium-align-spaced { justify-content: global.$justify-space-around; }
+  .medium-align-top { align-items: global.$align-start; }
+  .medium-align-bottom { align-items: global.$align-end; }
+  .medium-align-middle { align-items: global.$align-center; }
+  .medium-align-stretch { align-items: global.$align-stretch; }
+}
+
+.align-self-top { align-self: global.$align-start; }
+.align-self-bottom { align-self: global.$align-end; }
+.align-self-middle { align-self: global.$align-center; }
+.align-self-stretch { align-self: global.$align-stretch; }
+
+.show-for-medium { display: none; }
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .show-for-medium { display: inherit !important; }
+}
+
+@media print, screen and (max-width: calc(global.$medium-breakpoint - 0.001em)) {
+  .hide-for-medium { display: none !important; }
+}
+
+.show-for-large { display: none; }
+@media print, screen and (min-width: global.$large-breakpoint) {
+  .show-for-large { display: inherit !important; }
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) and (max-width: calc(global.$large-breakpoint - 0.001em)) {
+  .hide-for-large { display: none !important; }
+}
+
+.show-for-small-only { display: inherit !important; }
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .show-for-small-only { display: none !important; }
+}
+
+@media print, screen and (max-width: calc(global.$medium-breakpoint - 0.001em)) {
+  .hide-for-small-only { display: none !important; }
+}
+
+.show-for-medium-only { display: none; }
+@media print, screen and (min-width: global.$medium-breakpoint) and (max-width: calc(global.$large-breakpoint - 0.001em)) {
+  .show-for-medium-only { display: inherit !important; }
+}
+
+@media print, screen and (max-width: calc(global.$medium-breakpoint - 0.001em)), (min-width: global.$large-breakpoint) {
+  .hide-for-medium-only { display: none !important; }
+}
+
+.show-for-large-only { display: none; }
+@media print, screen and (min-width: global.$large-breakpoint) and (max-width: calc(global.$xlarge-breakpoint - 0.001em)) {
+  .show-for-large-only { display: inherit !important; }
+}
+
+@media print, screen and (max-width: calc(global.$large-breakpoint - 0.001em)), (min-width: global.$xlarge-breakpoint) {
+  .hide-for-large-only { display: none !important; }
+}
+
+@media #{global.$print-breakpoint} {
+    .show-for-print { display: inherit !important; }
+    .hide-for-print { display: none !important; }
+}
+
+@media #{global.$screen-breakpoint} {
+  .show-for-screen { display: inherit !important; }
+  .hide-for-screen { display: none !important; }
+}
+
+.show-for-sr {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+}
+
+.float-left { float: left !important; }
+.float-right { float: right !important; }
+.float-center {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.clearfix::before, .clearfix::after {
+  display: table;
+  content: ' ';
+  flex-basis: 0;
+  order: 1;
+}
+.clearfix::after { clear: both; }
+
+.hide { display: none !important; }
+.invisible { visibility: hidden; }
+.visible { visibility: visible; }
+
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  margin-top: global.$header-margin-top;
+  margin-bottom: global.$header-margin-bottom;
+  font-family: global.$body-font-family;
+  font-weight: global.$font-weight-normal;
+  line-height: global.$global-line-height;
+  text-rendering: optimizeLegibility;
+}
+
+h1 { font-size: global.$h1-font-size; }
+h2 { font-size: global.$h2-font-size; }
+h3 { font-size: global.$h3-font-size; }
+h4 { font-size: global.$h4-font-size; }
+h5 { font-size: global.$h5-font-size; }
+h6 { font-size: global.$h6-font-size; }
+
+.subheader {
+  margin-top: global.$header-margin-top;
+  margin-bottom: global.$small-margin-bottom;
+  font-weight: global.$font-weight-normal;
+  line-height: global.$global-line-height;
+  color: global.$dark-gray;
+}
+.subheader small {
+  font-weight: global.$font-weight-normal;
+  line-height: global.$global-line-height;
+  color: global.$medium-gray;
+}
+
+p {
+  margin-bottom: global.$paragraph-margin-bottom;
+  font-family: global.$body-font-family;
+  font-weight: global.$font-weight-normal;
+  line-height: global.$global-line-height;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  line-height: global.$global-line-height;
+  text-decoration: none;
+  color: global.$primary-color;
+  cursor: pointer;
+}
+a:hover { 
+    color: color.adjust(global.$primary-color, $lightness: -10%);
+}
+
+dfn, cite, em, i {
+  font-style: italic;
+  line-height: global.$global-line-height;
+}
+
+abbr, abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted global.$black;
+  line-height: global.$global-line-height;
+}
+
+small, .small {
+  font-size: global.$small-font-size;
+  line-height: global.$global-line-height;
+}
+
+strong, b {
+  font-weight: global.$font-weight-bold;
+  line-height: global.$global-line-height;
+}
+
+sub, sup { line-height: 0; }
+
+blockquote {
+  margin: 0 0 global.$global-margin 0;
+  padding: 0.5625rem 1.25rem 0 1.1875rem;
+  border-left: 1px solid global.$medium-gray;
+}
+blockquote, blockquote p {
+  line-height: global.$global-line-height;
+  color: global.$dark-gray;
+}
+
+cite {
+  display: block;
+  font-size: 0.8125rem;
+  color: global.$dark-gray;
+}
+cite:before { content: "— "; }
+
+code {
+  padding: 0.125rem 0.3125rem 0.0625rem;
+  font-family: global.$monospace-font-family;
+  font-size: 90%;
+  line-height: global.$global-line-height;
+  color: global.$black;
+  background-color: global.$light-gray;
+  border-radius: global.$global-radius;
+}
+
+kbd {
+  padding: 0.125rem 0.25rem 0;
+  margin: 0;
+  font-family: global.$monospace-font-family;
+  line-height: global.$global-line-height;
+  color: global.$black;
+  background-color: global.$light-gray;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+ul, ol, dl {
+  margin-bottom: global.$global-margin;
+  margin-left: global.$global-margin;
+  font-family: global.$body-font-family;
+  font-weight: global.$font-weight-normal;
+  line-height: global.$global-line-height;
+}
+
+li { font-size: inherit; }
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-left: global.$global-margin;
+  margin-bottom: 0;
+}
+
+dl dt { margin-bottom: 0.3rem; font-weight: global.$font-weight-bold; }
+dl dd { margin-bottom: global.$global-margin; }
+
+// Buttons
+
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0.85em 1em;
+  border: 1px solid global.$transparent;
+  border-radius: global.$global-radius;
+  background: global.$primary-color;
+  color: global.$white;
+  font-family: global.$body-font-family;
+  font-size: global.$button-font-size;
+  line-height: global.$button-line-height;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+.button:hover, .button:focus {
+  background-color: color.adjust(global.$primary-color, $lightness: -10%);
+  color: global.$white;
+}
+
+.button.tiny { font-size: 0.6rem; }
+.button.small { font-size: 0.75rem; }
+.button.large { font-size: 1.25rem; }
+.button.expanded {
+  display: block;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.button.secondary {
+  background-color: global.$secondary-color;
+  color: global.$white;
+}
+.button.secondary:hover, .button.secondary:focus {
+  background-color: color.adjust(global.$secondary-color, $lightness: -10%);
+  color: global.$white;
+}
+
+.button.success {
+  background-color: global.$success-color;
+  color: global.$white;
+}
+.button.success:hover, .button.success:focus {
+  background-color: color.adjust(global.$success-color, $lightness: -10%);
+  color: global.$white;
+}
+
+.button.hollow {
+  background-color: global.$transparent;
+  border: 1px solid global.$primary-color;
+  color: global.$primary-color;
+}
+.button.hollow:hover, .button.hollow:focus {
+  border: 1px solid color.adjust(global.$primary-color, $lightness: -10%);
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+}
+
+.button.hollow.secondary {
+  border: 1px solid global.$secondary-color;
+  color: global.$secondary-color;
+}
+.button.hollow.secondary:hover, .button.hollow.secondary:focus {
+  border: 1px solid color.adjust(global.$secondary-color, $lightness: -10%);
+  color: color.adjust(global.$secondary-color, $lightness: -10%);
+}
+
+.button.hollow.success {
+  border: 1px solid global.$success-color;
+  color: global.$success-color;
+}
+.button.hollow.success:hover, .button.hollow.success:focus {
+  border: 1px solid color.adjust(global.$success-color, $lightness: -10%);
+  color: color.adjust(global.$success-color, $lightness: -10%);
+}
+
+.button.disabled, .button[disabled] {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+.button.disabled:hover, .button.disabled:focus,
+.button[disabled]:hover, .button[disabled]:focus {
+  background-color: global.$primary-color;
+  color: global.$white;
+}
+
+.button.dropdown::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid global.$transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid global.$transparent;
+}
+
+
+.button-group {
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.button-group::before, .button-group::after {
+  display: none;
+}
+.button-group::before, .button-group::after {
+  display: table;
+  content: " ";
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.button-group::after {
+  clear: both;
+}
+.button-group .button {
+  margin: 0;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  font-size: 0.9rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+.button-group .button:last-child {
+  margin-right: 0;
+}
+.button-group.tiny .button {
+  font-size: 0.6rem;
+}
+.button-group.small .button {
+  font-size: 0.75rem;
+}
+.button-group.large .button {
+  font-size: 1.25rem;
+}
+.button-group.expanded .button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+}
+.button-group.primary .button, .button-group.primary .button.disabled, .button-group.primary .button[disabled], .button-group.primary .button.disabled:hover, .button-group.primary .button[disabled]:hover, .button-group.primary .button.disabled:focus, .button-group.primary .button[disabled]:focus {
+  background-color: #1779ba;
+  color: #fefefe;
+}
+.button-group.primary .button:hover, .button-group.primary .button:focus {
+  background-color: rgb(18.4, 96.8, 148.8);
+  color: #fefefe;
+}
+.button-group.secondary .button, .button-group.secondary .button.disabled, .button-group.secondary .button[disabled], .button-group.secondary .button.disabled:hover, .button-group.secondary .button[disabled]:hover, .button-group.secondary .button.disabled:focus, .button-group.secondary .button[disabled]:focus {
+  background-color: #767676;
+  color: #fefefe;
+}
+.button-group.secondary .button:hover, .button-group.secondary .button:focus {
+  background-color: rgb(94.4, 94.4, 94.4);
+  color: #fefefe;
+}
+.button-group.success .button, .button-group.success .button.disabled, .button-group.success .button[disabled], .button-group.success .button.disabled:hover, .button-group.success .button[disabled]:hover, .button-group.success .button.disabled:focus, .button-group.success .button[disabled]:focus {
+  background-color: #3adb76;
+  color: #0a0a0a;
+}
+.button-group.success .button:hover, .button-group.success .button:focus {
+  background-color: rgb(34.2386266094, 187.3613733906, 91.3030042918);
+  color: #0a0a0a;
+}
+.button-group.warning .button, .button-group.warning .button.disabled, .button-group.warning .button[disabled], .button-group.warning .button.disabled:hover, .button-group.warning .button[disabled]:hover, .button-group.warning .button.disabled:focus, .button-group.warning .button[disabled]:focus {
+  background-color: #ffae00;
+  color: #0a0a0a;
+}
+.button-group.warning .button:hover, .button-group.warning .button:focus {
+  background-color: rgb(204, 139.2, 0);
+  color: #0a0a0a;
+}
+.button-group.alert .button, .button-group.alert .button.disabled, .button-group.alert .button[disabled], .button-group.alert .button.disabled:hover, .button-group.alert .button[disabled]:hover, .button-group.alert .button.disabled:focus, .button-group.alert .button[disabled]:focus {
+  background-color: global.$alert-color;
+  color: #fefefe;
+}
+.button-group.alert .button:hover, .button-group.alert .button:focus {
+  background-color: rgb(165.0996015936, 58.6103585657, 42.1003984064);
+  color: #fefefe;
+}
+.button-group.hollow .button, .button-group.hollow .button:hover, .button-group.hollow .button:focus, .button-group.hollow .button.disabled, .button-group.hollow .button.disabled:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled], .button-group.hollow .button[disabled]:hover, .button-group.hollow .button[disabled]:focus {
+  background-color: transparent;
+}
+.button-group.hollow .button, .button-group.hollow .button.disabled, .button-group.hollow .button[disabled], .button-group.hollow .button.disabled:hover, .button-group.hollow .button[disabled]:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled]:focus {
+  border: 1px solid #1779ba;
+  color: #1779ba;
+}
+.button-group.hollow .button:hover, .button-group.hollow .button:focus {
+  border-color: rgb(11.5, 60.5, 93);
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.hollow.primary .button, .button-group.hollow.primary .button.disabled, .button-group.hollow.primary .button[disabled], .button-group.hollow.primary .button.disabled:hover, .button-group.hollow.primary .button[disabled]:hover, .button-group.hollow.primary .button.disabled:focus, .button-group.hollow.primary .button[disabled]:focus, .button-group.hollow .button.primary, .button-group.hollow .button.primary.disabled, .button-group.hollow .button.primary[disabled], .button-group.hollow .button.primary.disabled:hover, .button-group.hollow .button.primary[disabled]:hover, .button-group.hollow .button.primary.disabled:focus, .button-group.hollow .button.primary[disabled]:focus {
+  border: 1px solid #1779ba;
+  color: #1779ba;
+}
+.button-group.hollow.primary .button:hover, .button-group.hollow.primary .button:focus, .button-group.hollow .button.primary:hover, .button-group.hollow .button.primary:focus {
+  border-color: rgb(11.5, 60.5, 93);
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.hollow.secondary .button, .button-group.hollow.secondary .button.disabled, .button-group.hollow.secondary .button[disabled], .button-group.hollow.secondary .button.disabled:hover, .button-group.hollow.secondary .button[disabled]:hover, .button-group.hollow.secondary .button.disabled:focus, .button-group.hollow.secondary .button[disabled]:focus, .button-group.hollow .button.secondary, .button-group.hollow .button.secondary.disabled, .button-group.hollow .button.secondary[disabled], .button-group.hollow .button.secondary.disabled:hover, .button-group.hollow .button.secondary[disabled]:hover, .button-group.hollow .button.secondary.disabled:focus, .button-group.hollow .button.secondary[disabled]:focus {
+  border: 1px solid #767676;
+  color: #767676;
+}
+.button-group.hollow.secondary .button:hover, .button-group.hollow.secondary .button:focus, .button-group.hollow .button.secondary:hover, .button-group.hollow .button.secondary:focus {
+  border-color: #3b3b3b;
+  color: #3b3b3b;
+}
+.button-group.hollow.success .button, .button-group.hollow.success .button.disabled, .button-group.hollow.success .button[disabled], .button-group.hollow.success .button.disabled:hover, .button-group.hollow.success .button[disabled]:hover, .button-group.hollow.success .button.disabled:focus, .button-group.hollow.success .button[disabled]:focus, .button-group.hollow .button.success, .button-group.hollow .button.success.disabled, .button-group.hollow .button.success[disabled], .button-group.hollow .button.success.disabled:hover, .button-group.hollow .button.success[disabled]:hover, .button-group.hollow .button.success.disabled:focus, .button-group.hollow .button.success[disabled]:focus {
+  border: 1px solid #3adb76;
+  color: #3adb76;
+}
+.button-group.hollow.success .button:hover, .button-group.hollow.success .button:focus, .button-group.hollow .button.success:hover, .button-group.hollow .button.success:focus {
+  border-color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+  color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+}
+.button-group.hollow.warning .button, .button-group.hollow.warning .button.disabled, .button-group.hollow.warning .button[disabled], .button-group.hollow.warning .button.disabled:hover, .button-group.hollow.warning .button[disabled]:hover, .button-group.hollow.warning .button.disabled:focus, .button-group.hollow.warning .button[disabled]:focus, .button-group.hollow .button.warning, .button-group.hollow .button.warning.disabled, .button-group.hollow .button.warning[disabled], .button-group.hollow .button.warning.disabled:hover, .button-group.hollow .button.warning[disabled]:hover, .button-group.hollow .button.warning.disabled:focus, .button-group.hollow .button.warning[disabled]:focus {
+  border: 1px solid #ffae00;
+  color: #ffae00;
+}
+.button-group.hollow.warning .button:hover, .button-group.hollow.warning .button:focus, .button-group.hollow .button.warning:hover, .button-group.hollow .button.warning:focus {
+  border-color: rgb(127.5, 87, 0);
+  color: rgb(127.5, 87, 0);
+}
+.button-group.hollow.alert .button, .button-group.hollow.alert .button.disabled, .button-group.hollow.alert .button[disabled], .button-group.hollow.alert .button.disabled:hover, .button-group.hollow.alert .button[disabled]:hover, .button-group.hollow.alert .button.disabled:focus, .button-group.hollow.alert .button[disabled]:focus, .button-group.hollow .button.alert, .button-group.hollow .button.alert.disabled, .button-group.hollow .button.alert[disabled], .button-group.hollow .button.alert.disabled:hover, .button-group.hollow .button.alert[disabled]:hover, .button-group.hollow .button.alert.disabled:focus, .button-group.hollow .button.alert[disabled]:focus {
+  border: 1px solid global.$alert-color;
+  color: global.$alert-color;
+}
+.button-group.hollow.alert .button:hover, .button-group.hollow.alert .button:focus, .button-group.hollow .button.alert:hover, .button-group.hollow .button.alert:focus {
+  border-color: rgb(103.187250996, 36.6314741036, 26.312749004);
+  color: rgb(103.187250996, 36.6314741036, 26.312749004);
+}
+.button-group.clear .button, .button-group.clear .button:hover, .button-group.clear .button:focus, .button-group.clear .button.disabled, .button-group.clear .button.disabled:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled], .button-group.clear .button[disabled]:hover, .button-group.clear .button[disabled]:focus {
+  border-color: transparent;
+  background-color: transparent;
+}
+.button-group.clear .button, .button-group.clear .button.disabled, .button-group.clear .button[disabled], .button-group.clear .button.disabled:hover, .button-group.clear .button[disabled]:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled]:focus {
+  color: #1779ba;
+}
+.button-group.clear .button:hover, .button-group.clear .button:focus {
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.clear.primary .button, .button-group.clear.primary .button.disabled, .button-group.clear.primary .button[disabled], .button-group.clear.primary .button.disabled:hover, .button-group.clear.primary .button[disabled]:hover, .button-group.clear.primary .button.disabled:focus, .button-group.clear.primary .button[disabled]:focus, .button-group.clear .button.primary, .button-group.clear .button.primary.disabled, .button-group.clear .button.primary[disabled], .button-group.clear .button.primary.disabled:hover, .button-group.clear .button.primary[disabled]:hover, .button-group.clear .button.primary.disabled:focus, .button-group.clear .button.primary[disabled]:focus {
+  color: #1779ba;
+}
+.button-group.clear.primary .button:hover, .button-group.clear.primary .button:focus, .button-group.clear .button.primary:hover, .button-group.clear .button.primary:focus {
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.clear.secondary .button, .button-group.clear.secondary .button.disabled, .button-group.clear.secondary .button[disabled], .button-group.clear.secondary .button.disabled:hover, .button-group.clear.secondary .button[disabled]:hover, .button-group.clear.secondary .button.disabled:focus, .button-group.clear.secondary .button[disabled]:focus, .button-group.clear .button.secondary, .button-group.clear .button.secondary.disabled, .button-group.clear .button.secondary[disabled], .button-group.clear .button.secondary.disabled:hover, .button-group.clear .button.secondary[disabled]:hover, .button-group.clear .button.secondary.disabled:focus, .button-group.clear .button.secondary[disabled]:focus {
+  color: #767676;
+}
+.button-group.clear.secondary .button:hover, .button-group.clear.secondary .button:focus, .button-group.clear .button.secondary:hover, .button-group.clear .button.secondary:focus {
+  color: #3b3b3b;
+}
+.button-group.clear.success .button, .button-group.clear.success .button.disabled, .button-group.clear.success .button[disabled], .button-group.clear.success .button.disabled:hover, .button-group.clear.success .button[disabled]:hover, .button-group.clear.success .button.disabled:focus, .button-group.clear.success .button[disabled]:focus, .button-group.clear .button.success, .button-group.clear .button.success.disabled, .button-group.clear .button.success[disabled], .button-group.clear .button.success.disabled:hover, .button-group.clear .button.success[disabled]:hover, .button-group.clear .button.success.disabled:focus, .button-group.clear .button.success[disabled]:focus {
+  color: #3adb76;
+}
+.button-group.clear.success .button:hover, .button-group.clear.success .button:focus, .button-group.clear .button.success:hover, .button-group.clear .button.success:focus {
+  color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+}
+.button-group.clear.warning .button, .button-group.clear.warning .button.disabled, .button-group.clear.warning .button[disabled], .button-group.clear.warning .button.disabled:hover, .button-group.clear.warning .button[disabled]:hover, .button-group.clear.warning .button.disabled:focus, .button-group.clear.warning .button[disabled]:focus, .button-group.clear .button.warning, .button-group.clear .button.warning.disabled, .button-group.clear .button.warning[disabled], .button-group.clear .button.warning.disabled:hover, .button-group.clear .button.warning[disabled]:hover, .button-group.clear .button.warning.disabled:focus, .button-group.clear .button.warning[disabled]:focus {
+  color: #ffae00;
+}
+.button-group.clear.warning .button:hover, .button-group.clear.warning .button:focus, .button-group.clear .button.warning:hover, .button-group.clear .button.warning:focus {
+  color: rgb(127.5, 87, 0);
+}
+.button-group.clear.alert .button, .button-group.clear.alert .button.disabled, .button-group.clear.alert .button[disabled], .button-group.clear.alert .button.disabled:hover, .button-group.clear.alert .button[disabled]:hover, .button-group.clear.alert .button.disabled:focus, .button-group.clear.alert .button[disabled]:focus, .button-group.clear .button.alert, .button-group.clear .button.alert.disabled, .button-group.clear .button.alert[disabled], .button-group.clear .button.alert.disabled:hover, .button-group.clear .button.alert[disabled]:hover, .button-group.clear .button.alert.disabled:focus, .button-group.clear .button.alert[disabled]:focus {
+  color: global.$alert-color;
+}
+.button-group.clear.alert .button:hover, .button-group.clear.alert .button:focus, .button-group.clear .button.alert:hover, .button-group.clear .button.alert:focus {
+  color: rgb(103.187250996, 36.6314741036, 26.312749004);
+}
+.button-group.no-gaps .button {
+  margin-right: -0.0625rem;
+}
+.button-group.no-gaps .button + .button {
+  border-left-color: transparent;
+}
+.button-group.stacked, .button-group.stacked-for-small, .button-group.stacked-for-medium {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.button-group.stacked .button, .button-group.stacked-for-small .button, .button-group.stacked-for-medium .button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+.button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
+  margin-bottom: 0;
+}
+.button-group.stacked.expanded .button, .button-group.stacked-for-small.expanded .button, .button-group.stacked-for-medium.expanded .button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+}
+@media print, screen and (min-width: 40em) {
+  .button-group.stacked-for-small .button {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+}
+@media print, screen and (min-width: 64em) {
+  .button-group.stacked-for-medium .button {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+}
+@media print, screen and (max-width: 39.99875em) {
+  .button-group.stacked-for-small.expanded {
+    display: block;
+  }
+  .button-group.stacked-for-small.expanded .button {
+    display: block;
+    margin-right: 0;
+  }
+}
+@media print, screen and (max-width: 63.99875em) {
+  .button-group.stacked-for-medium.expanded {
+    display: block;
+  }
+  .button-group.stacked-for-medium.expanded .button {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+
+
+.button-group {
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.button-group::before, .button-group::after {
+  display: none;
+}
+.button-group::before, .button-group::after {
+  display: table;
+  content: " ";
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.button-group::after {
+  clear: both;
+}
+.button-group .button {
+  margin: 0;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  font-size: 0.9rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+.button-group .button:last-child {
+  margin-right: 0;
+}
+.button-group.tiny .button {
+  font-size: 0.6rem;
+}
+.button-group.small .button {
+  font-size: 0.75rem;
+}
+.button-group.large .button {
+  font-size: 1.25rem;
+}
+.button-group.expanded .button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+}
+.button-group.primary .button, .button-group.primary .button.disabled, .button-group.primary .button[disabled], .button-group.primary .button.disabled:hover, .button-group.primary .button[disabled]:hover, .button-group.primary .button.disabled:focus, .button-group.primary .button[disabled]:focus {
+  background-color: #1779ba;
+  color: #fefefe;
+}
+.button-group.primary .button:hover, .button-group.primary .button:focus {
+  background-color: rgb(18.4, 96.8, 148.8);
+  color: #fefefe;
+}
+.button-group.secondary .button, .button-group.secondary .button.disabled, .button-group.secondary .button[disabled], .button-group.secondary .button.disabled:hover, .button-group.secondary .button[disabled]:hover, .button-group.secondary .button.disabled:focus, .button-group.secondary .button[disabled]:focus {
+  background-color: #767676;
+  color: #fefefe;
+}
+.button-group.secondary .button:hover, .button-group.secondary .button:focus {
+  background-color: rgb(94.4, 94.4, 94.4);
+  color: #fefefe;
+}
+.button-group.success .button, .button-group.success .button.disabled, .button-group.success .button[disabled], .button-group.success .button.disabled:hover, .button-group.success .button[disabled]:hover, .button-group.success .button.disabled:focus, .button-group.success .button[disabled]:focus {
+  background-color: #3adb76;
+  color: #0a0a0a;
+}
+.button-group.success .button:hover, .button-group.success .button:focus {
+  background-color: rgb(34.2386266094, 187.3613733906, 91.3030042918);
+  color: #0a0a0a;
+}
+.button-group.warning .button, .button-group.warning .button.disabled, .button-group.warning .button[disabled], .button-group.warning .button.disabled:hover, .button-group.warning .button[disabled]:hover, .button-group.warning .button.disabled:focus, .button-group.warning .button[disabled]:focus {
+  background-color: #ffae00;
+  color: #0a0a0a;
+}
+.button-group.warning .button:hover, .button-group.warning .button:focus {
+  background-color: rgb(204, 139.2, 0);
+  color: #0a0a0a;
+}
+.button-group.alert .button, .button-group.alert .button.disabled, .button-group.alert .button[disabled], .button-group.alert .button.disabled:hover, .button-group.alert .button[disabled]:hover, .button-group.alert .button.disabled:focus, .button-group.alert .button[disabled]:focus {
+  background-color: global.$alert-color;
+  color: #fefefe;
+}
+.button-group.alert .button:hover, .button-group.alert .button:focus {
+  background-color: rgb(165.0996015936, 58.6103585657, 42.1003984064);
+  color: #fefefe;
+}
+.button-group.hollow .button, .button-group.hollow .button:hover, .button-group.hollow .button:focus, .button-group.hollow .button.disabled, .button-group.hollow .button.disabled:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled], .button-group.hollow .button[disabled]:hover, .button-group.hollow .button[disabled]:focus {
+  background-color: transparent;
+}
+.button-group.hollow .button, .button-group.hollow .button.disabled, .button-group.hollow .button[disabled], .button-group.hollow .button.disabled:hover, .button-group.hollow .button[disabled]:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled]:focus {
+  border: 1px solid #1779ba;
+  color: #1779ba;
+}
+.button-group.hollow .button:hover, .button-group.hollow .button:focus {
+  border-color: rgb(11.5, 60.5, 93);
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.hollow.primary .button, .button-group.hollow.primary .button.disabled, .button-group.hollow.primary .button[disabled], .button-group.hollow.primary .button.disabled:hover, .button-group.hollow.primary .button[disabled]:hover, .button-group.hollow.primary .button.disabled:focus, .button-group.hollow.primary .button[disabled]:focus, .button-group.hollow .button.primary, .button-group.hollow .button.primary.disabled, .button-group.hollow .button.primary[disabled], .button-group.hollow .button.primary.disabled:hover, .button-group.hollow .button.primary[disabled]:hover, .button-group.hollow .button.primary.disabled:focus, .button-group.hollow .button.primary[disabled]:focus {
+  border: 1px solid #1779ba;
+  color: #1779ba;
+}
+.button-group.hollow.primary .button:hover, .button-group.hollow.primary .button:focus, .button-group.hollow .button.primary:hover, .button-group.hollow .button.primary:focus {
+  border-color: rgb(11.5, 60.5, 93);
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.hollow.secondary .button, .button-group.hollow.secondary .button.disabled, .button-group.hollow.secondary .button[disabled], .button-group.hollow.secondary .button.disabled:hover, .button-group.hollow.secondary .button[disabled]:hover, .button-group.hollow.secondary .button.disabled:focus, .button-group.hollow.secondary .button[disabled]:focus, .button-group.hollow .button.secondary, .button-group.hollow .button.secondary.disabled, .button-group.hollow .button.secondary[disabled], .button-group.hollow .button.secondary.disabled:hover, .button-group.hollow .button.secondary[disabled]:hover, .button-group.hollow .button.secondary.disabled:focus, .button-group.hollow .button.secondary[disabled]:focus {
+  border: 1px solid #767676;
+  color: #767676;
+}
+.button-group.hollow.secondary .button:hover, .button-group.hollow.secondary .button:focus, .button-group.hollow .button.secondary:hover, .button-group.hollow .button.secondary:focus {
+  border-color: #3b3b3b;
+  color: #3b3b3b;
+}
+.button-group.hollow.success .button, .button-group.hollow.success .button.disabled, .button-group.hollow.success .button[disabled], .button-group.hollow.success .button.disabled:hover, .button-group.hollow.success .button[disabled]:hover, .button-group.hollow.success .button.disabled:focus, .button-group.hollow.success .button[disabled]:focus, .button-group.hollow .button.success, .button-group.hollow .button.success.disabled, .button-group.hollow .button.success[disabled], .button-group.hollow .button.success.disabled:hover, .button-group.hollow .button.success[disabled]:hover, .button-group.hollow .button.success.disabled:focus, .button-group.hollow .button.success[disabled]:focus {
+  border: 1px solid #3adb76;
+  color: #3adb76;
+}
+.button-group.hollow.success .button:hover, .button-group.hollow.success .button:focus, .button-group.hollow .button.success:hover, .button-group.hollow .button.success:focus {
+  border-color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+  color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+}
+.button-group.hollow.warning .button, .button-group.hollow.warning .button.disabled, .button-group.hollow.warning .button[disabled], .button-group.hollow.warning .button.disabled:hover, .button-group.hollow.warning .button[disabled]:hover, .button-group.hollow.warning .button.disabled:focus, .button-group.hollow.warning .button[disabled]:focus, .button-group.hollow .button.warning, .button-group.hollow .button.warning.disabled, .button-group.hollow .button.warning[disabled], .button-group.hollow .button.warning.disabled:hover, .button-group.hollow .button.warning[disabled]:hover, .button-group.hollow .button.warning.disabled:focus, .button-group.hollow .button.warning[disabled]:focus {
+  border: 1px solid #ffae00;
+  color: #ffae00;
+}
+.button-group.hollow.warning .button:hover, .button-group.hollow.warning .button:focus, .button-group.hollow .button.warning:hover, .button-group.hollow .button.warning:focus {
+  border-color: rgb(127.5, 87, 0);
+  color: rgb(127.5, 87, 0);
+}
+.button-group.hollow.alert .button, .button-group.hollow.alert .button.disabled, .button-group.hollow.alert .button[disabled], .button-group.hollow.alert .button.disabled:hover, .button-group.hollow.alert .button[disabled]:hover, .button-group.hollow.alert .button.disabled:focus, .button-group.hollow.alert .button[disabled]:focus, .button-group.hollow .button.alert, .button-group.hollow .button.alert.disabled, .button-group.hollow .button.alert[disabled], .button-group.hollow .button.alert.disabled:hover, .button-group.hollow .button.alert[disabled]:hover, .button-group.hollow .button.alert.disabled:focus, .button-group.hollow .button.alert[disabled]:focus {
+  border: 1px solid global.$alert-color;
+  color: global.$alert-color;
+}
+.button-group.hollow.alert .button:hover, .button-group.hollow.alert .button:focus, .button-group.hollow .button.alert:hover, .button-group.hollow .button.alert:focus {
+  border-color: rgb(103.187250996, 36.6314741036, 26.312749004);
+  color: rgb(103.187250996, 36.6314741036, 26.312749004);
+}
+.button-group.clear .button, .button-group.clear .button:hover, .button-group.clear .button:focus, .button-group.clear .button.disabled, .button-group.clear .button.disabled:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled], .button-group.clear .button[disabled]:hover, .button-group.clear .button[disabled]:focus {
+  border-color: transparent;
+  background-color: transparent;
+}
+.button-group.clear .button, .button-group.clear .button.disabled, .button-group.clear .button[disabled], .button-group.clear .button.disabled:hover, .button-group.clear .button[disabled]:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled]:focus {
+  color: #1779ba;
+}
+.button-group.clear .button:hover, .button-group.clear .button:focus {
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.clear.primary .button, .button-group.clear.primary .button.disabled, .button-group.clear.primary .button[disabled], .button-group.clear.primary .button.disabled:hover, .button-group.clear.primary .button[disabled]:hover, .button-group.clear.primary .button.disabled:focus, .button-group.clear.primary .button[disabled]:focus, .button-group.clear .button.primary, .button-group.clear .button.primary.disabled, .button-group.clear .button.primary[disabled], .button-group.clear .button.primary.disabled:hover, .button-group.clear .button.primary[disabled]:hover, .button-group.clear .button.primary.disabled:focus, .button-group.clear .button.primary[disabled]:focus {
+  color: #1779ba;
+}
+.button-group.clear.primary .button:hover, .button-group.clear.primary .button:focus, .button-group.clear .button.primary:hover, .button-group.clear .button.primary:focus {
+  color: rgb(11.5, 60.5, 93);
+}
+.button-group.clear.secondary .button, .button-group.clear.secondary .button.disabled, .button-group.clear.secondary .button[disabled], .button-group.clear.secondary .button.disabled:hover, .button-group.clear.secondary .button[disabled]:hover, .button-group.clear.secondary .button.disabled:focus, .button-group.clear.secondary .button[disabled]:focus, .button-group.clear .button.secondary, .button-group.clear .button.secondary.disabled, .button-group.clear .button.secondary[disabled], .button-group.clear .button.secondary.disabled:hover, .button-group.clear .button.secondary[disabled]:hover, .button-group.clear .button.secondary.disabled:focus, .button-group.clear .button.secondary[disabled]:focus {
+  color: #767676;
+}
+.button-group.clear.secondary .button:hover, .button-group.clear.secondary .button:focus, .button-group.clear .button.secondary:hover, .button-group.clear .button.secondary:focus {
+  color: #3b3b3b;
+}
+.button-group.clear.success .button, .button-group.clear.success .button.disabled, .button-group.clear.success .button[disabled], .button-group.clear.success .button.disabled:hover, .button-group.clear.success .button[disabled]:hover, .button-group.clear.success .button.disabled:focus, .button-group.clear.success .button[disabled]:focus, .button-group.clear .button.success, .button-group.clear .button.success.disabled, .button-group.clear .button.success[disabled], .button-group.clear .button.success.disabled:hover, .button-group.clear .button.success[disabled]:hover, .button-group.clear .button.success.disabled:focus, .button-group.clear .button.success[disabled]:focus {
+  color: #3adb76;
+}
+.button-group.clear.success .button:hover, .button-group.clear.success .button:focus, .button-group.clear .button.success:hover, .button-group.clear .button.success:focus {
+  color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+}
+.button-group.clear.warning .button, .button-group.clear.warning .button.disabled, .button-group.clear.warning .button[disabled], .button-group.clear.warning .button.disabled:hover, .button-group.clear.warning .button[disabled]:hover, .button-group.clear.warning .button.disabled:focus, .button-group.clear.warning .button[disabled]:focus, .button-group.clear .button.warning, .button-group.clear .button.warning.disabled, .button-group.clear .button.warning[disabled], .button-group.clear .button.warning.disabled:hover, .button-group.clear .button.warning[disabled]:hover, .button-group.clear .button.warning.disabled:focus, .button-group.clear .button.warning[disabled]:focus {
+  color: #ffae00;
+}
+.button-group.clear.warning .button:hover, .button-group.clear.warning .button:focus, .button-group.clear .button.warning:hover, .button-group.clear .button.warning:focus {
+  color: rgb(127.5, 87, 0);
+}
+.button-group.clear.alert .button, .button-group.clear.alert .button.disabled, .button-group.clear.alert .button[disabled], .button-group.clear.alert .button.disabled:hover, .button-group.clear.alert .button[disabled]:hover, .button-group.clear.alert .button.disabled:focus, .button-group.clear.alert .button[disabled]:focus, .button-group.clear .button.alert, .button-group.clear .button.alert.disabled, .button-group.clear .button.alert[disabled], .button-group.clear .button.alert.disabled:hover, .button-group.clear .button.alert[disabled]:hover, .button-group.clear .button.alert.disabled:focus, .button-group.clear .button.alert[disabled]:focus {
+  color: global.$alert-color;
+}
+.button-group.clear.alert .button:hover, .button-group.clear.alert .button:focus, .button-group.clear .button.alert:hover, .button-group.clear .button.alert:focus {
+  color: rgb(103.187250996, 36.6314741036, 26.312749004);
+}
+.button-group.no-gaps .button {
+  margin-right: -0.0625rem;
+}
+.button-group.no-gaps .button + .button {
+  border-left-color: transparent;
+}
+.button-group.stacked, .button-group.stacked-for-small, .button-group.stacked-for-medium {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.button-group.stacked .button, .button-group.stacked-for-small .button, .button-group.stacked-for-medium .button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+.button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
+  margin-bottom: 0;
+}
+.button-group.stacked.expanded .button, .button-group.stacked-for-small.expanded .button, .button-group.stacked-for-medium.expanded .button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+}
+@media print, screen and (min-width: 40em) {
+  .button-group.stacked-for-small .button {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+}
+@media print, screen and (min-width: 64em) {
+  .button-group.stacked-for-medium .button {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+}
+@media print, screen and (max-width: 39.99875em) {
+  .button-group.stacked-for-small.expanded {
+    display: block;
+  }
+  .button-group.stacked-for-small.expanded .button {
+    display: block;
+    margin-right: 0;
+  }
+}
+@media print, screen and (max-width: 63.99875em) {
+  .button-group.stacked-for-medium.expanded {
+    display: block;
+  }
+  .button-group.stacked-for-medium.expanded .button {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+
+.button-group {
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+}
+.button-group::before, .button-group::after {
+    display: none;
+}
+.button-group::before, .button-group::after {
+    display: table;
+    content: " ";
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+}
+.button-group::after {
+    clear: both;
+}
+.button-group .button {
+    margin: 0;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    font-size: 0.9rem;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+}
+.button-group .button:last-child {
+    margin-right: 0;
+}
+.button-group.tiny .button {
+    font-size: 0.6rem;
+}
+.button-group.small .button {
+    font-size: 0.75rem;
+}
+.button-group.large .button {
+    font-size: 1.25rem;
+}
+.button-group.expanded .button {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0px;
+            flex: 1 1 0px;
+}
+.button-group.primary .button, .button-group.primary .button.disabled, .button-group.primary .button[disabled], .button-group.primary .button.disabled:hover, .button-group.primary .button[disabled]:hover, .button-group.primary .button.disabled:focus, .button-group.primary .button[disabled]:focus {
+    background-color: #1779ba;
+    color: #fefefe;
+}
+.button-group.primary .button:hover, .button-group.primary .button:focus {
+    background-color: rgb(18.4, 96.8, 148.8);
+    color: #fefefe;
+}
+.button-group.secondary .button, .button-group.secondary .button.disabled, .button-group.secondary .button[disabled], .button-group.secondary .button.disabled:hover, .button-group.secondary .button[disabled]:hover, .button-group.secondary .button.disabled:focus, .button-group.secondary .button[disabled]:focus {
+    background-color: #767676;
+    color: #fefefe;
+}
+.button-group.secondary .button:hover, .button-group.secondary .button:focus {
+    background-color: rgb(94.4, 94.4, 94.4);
+    color: #fefefe;
+}
+.button-group.success .button, .button-group.success .button.disabled, .button-group.success .button[disabled], .button-group.success .button.disabled:hover, .button-group.success .button[disabled]:hover, .button-group.success .button.disabled:focus, .button-group.success .button[disabled]:focus {
+    background-color: #3adb76;
+    color: #0a0a0a;
+}
+.button-group.success .button:hover, .button-group.success .button:focus {
+    background-color: rgb(34.2386266094, 187.3613733906, 91.3030042918);
+    color: #0a0a0a;
+}
+.button-group.warning .button, .button-group.warning .button.disabled, .button-group.warning .button[disabled], .button-group.warning .button.disabled:hover, .button-group.warning .button[disabled]:hover, .button-group.warning .button.disabled:focus, .button-group.warning .button[disabled]:focus {
+    background-color: #ffae00;
+    color: #0a0a0a;
+}
+.button-group.warning .button:hover, .button-group.warning .button:focus {
+    background-color: rgb(204, 139.2, 0);
+    color: #0a0a0a;
+}
+.button-group.alert .button, .button-group.alert .button.disabled, .button-group.alert .button[disabled], .button-group.alert .button.disabled:hover, .button-group.alert .button[disabled]:hover, .button-group.alert .button.disabled:focus, .button-group.alert .button[disabled]:focus {
+    background-color: global.$alert-color;
+    color: #fefefe;
+}
+.button-group.alert .button:hover, .button-group.alert .button:focus {
+    background-color: rgb(165.0996015936, 58.6103585657, 42.1003984064);
+    color: #fefefe;
+}
+.button-group.hollow .button, .button-group.hollow .button:hover, .button-group.hollow .button:focus, .button-group.hollow .button.disabled, .button-group.hollow .button.disabled:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled], .button-group.hollow .button[disabled]:hover, .button-group.hollow .button[disabled]:focus {
+    background-color: transparent;
+}
+.button-group.hollow .button, .button-group.hollow .button.disabled, .button-group.hollow .button[disabled], .button-group.hollow .button.disabled:hover, .button-group.hollow .button[disabled]:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled]:focus {
+    border: 1px solid #1779ba;
+    color: #1779ba;
+}
+.button-group.hollow .button:hover, .button-group.hollow .button:focus {
+    border-color: rgb(11.5, 60.5, 93);
+    color: rgb(11.5, 60.5, 93);
+}
+.button-group.hollow.primary .button, .button-group.hollow.primary .button.disabled, .button-group.hollow.primary .button[disabled], .button-group.hollow.primary .button.disabled:hover, .button-group.hollow.primary .button[disabled]:hover, .button-group.hollow.primary .button.disabled:focus, .button-group.hollow.primary .button[disabled]:focus, .button-group.hollow .button.primary, .button-group.hollow .button.primary.disabled, .button-group.hollow .button.primary[disabled], .button-group.hollow .button.primary.disabled:hover, .button-group.hollow .button.primary[disabled]:hover, .button-group.hollow .button.primary.disabled:focus, .button-group.hollow .button.primary[disabled]:focus {
+    border: 1px solid #1779ba;
+    color: #1779ba;
+}
+.button-group.hollow.primary .button:hover, .button-group.hollow.primary .button:focus, .button-group.hollow .button.primary:hover, .button-group.hollow .button.primary:focus {
+    border-color: rgb(11.5, 60.5, 93);
+    color: rgb(11.5, 60.5, 93);
+}
+.button-group.hollow.secondary .button, .button-group.hollow.secondary .button.disabled, .button-group.hollow.secondary .button[disabled], .button-group.hollow.secondary .button.disabled:hover, .button-group.hollow.secondary .button[disabled]:hover, .button-group.hollow.secondary .button.disabled:focus, .button-group.hollow.secondary .button[disabled]:focus, .button-group.hollow .button.secondary, .button-group.hollow .button.secondary.disabled, .button-group.hollow .button.secondary[disabled], .button-group.hollow .button.secondary.disabled:hover, .button-group.hollow .button.secondary[disabled]:hover, .button-group.hollow .button.secondary.disabled:focus, .button-group.hollow .button.secondary[disabled]:focus {
+    border: 1px solid #767676;
+    color: #767676;
+}
+.button-group.hollow.secondary .button:hover, .button-group.hollow.secondary .button:focus, .button-group.hollow .button.secondary:hover, .button-group.hollow .button.secondary:focus {
+    border-color: #3b3b3b;
+    color: #3b3b3b;
+}
+.button-group.hollow.success .button, .button-group.hollow.success .button.disabled, .button-group.hollow.success .button[disabled], .button-group.hollow.success .button.disabled:hover, .button-group.hollow.success .button[disabled]:hover, .button-group.hollow.success .button.disabled:focus, .button-group.hollow.success .button[disabled]:focus, .button-group.hollow .button.success, .button-group.hollow .button.success.disabled, .button-group.hollow .button.success[disabled], .button-group.hollow .button.success.disabled:hover, .button-group.hollow .button.success[disabled]:hover, .button-group.hollow .button.success.disabled:focus, .button-group.hollow .button.success[disabled]:focus {
+    border: 1px solid #3adb76;
+    color: #3adb76;
+}
+.button-group.hollow.success .button:hover, .button-group.hollow.success .button:focus, .button-group.hollow .button.success:hover, .button-group.hollow .button.success:focus {
+    border-color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+    color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+}
+.button-group.hollow.warning .button, .button-group.hollow.warning .button.disabled, .button-group.hollow.warning .button[disabled], .button-group.hollow.warning .button.disabled:hover, .button-group.hollow.warning .button[disabled]:hover, .button-group.hollow.warning .button.disabled:focus, .button-group.hollow.warning .button[disabled]:focus, .button-group.hollow .button.warning, .button-group.hollow .button.warning.disabled, .button-group.hollow .button.warning[disabled], .button-group.hollow .button.warning.disabled:hover, .button-group.hollow .button.warning[disabled]:hover, .button-group.hollow .button.warning.disabled:focus, .button-group.hollow .button.warning[disabled]:focus {
+    border: 1px solid #ffae00;
+    color: #ffae00;
+}
+.button-group.hollow.warning .button:hover, .button-group.hollow.warning .button:focus, .button-group.hollow .button.warning:hover, .button-group.hollow .button.warning:focus {
+    border-color: rgb(127.5, 87, 0);
+    color: rgb(127.5, 87, 0);
+}
+.button-group.hollow.alert .button, .button-group.hollow.alert .button.disabled, .button-group.hollow.alert .button[disabled], .button-group.hollow.alert .button.disabled:hover, .button-group.hollow.alert .button[disabled]:hover, .button-group.hollow.alert .button.disabled:focus, .button-group.hollow.alert .button[disabled]:focus, .button-group.hollow .button.alert, .button-group.hollow .button.alert.disabled, .button-group.hollow .button.alert[disabled], .button-group.hollow .button.alert.disabled:hover, .button-group.hollow .button.alert[disabled]:hover, .button-group.hollow .button.alert.disabled:focus, .button-group.hollow .button.alert[disabled]:focus {
+    border: 1px solid global.$alert-color;
+    color: global.$alert-color;
+}
+.button-group.hollow.alert .button:hover, .button-group.hollow.alert .button:focus, .button-group.hollow .button.alert:hover, .button-group.hollow .button.alert:focus {
+    border-color: rgb(103.187250996, 36.6314741036, 26.312749004);
+    color: rgb(103.187250996, 36.6314741036, 26.312749004);
+}
+.button-group.clear .button, .button-group.clear .button:hover, .button-group.clear .button:focus, .button-group.clear .button.disabled, .button-group.clear .button.disabled:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled], .button-group.clear .button[disabled]:hover, .button-group.clear .button[disabled]:focus {
+    border-color: transparent;
+    background-color: transparent;
+}
+.button-group.clear .button, .button-group.clear .button.disabled, .button-group.clear .button[disabled], .button-group.clear .button.disabled:hover, .button-group.clear .button[disabled]:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled]:focus {
+    color: #1779ba;
+}
+.button-group.clear .button:hover, .button-group.clear .button:focus {
+    color: rgb(11.5, 60.5, 93);
+}
+.button-group.clear.primary .button, .button-group.clear.primary .button.disabled, .button-group.clear.primary .button[disabled], .button-group.clear.primary .button.disabled:hover, .button-group.clear.primary .button[disabled]:hover, .button-group.clear.primary .button.disabled:focus, .button-group.clear.primary .button[disabled]:focus, .button-group.clear .button.primary, .button-group.clear .button.primary.disabled, .button-group.clear .button.primary[disabled], .button-group.clear .button.primary.disabled:hover, .button-group.clear .button.primary[disabled]:hover, .button-group.clear .button.primary.disabled:focus, .button-group.clear .button.primary[disabled]:focus {
+    color: #1779ba;
+}
+.button-group.clear.primary .button:hover, .button-group.clear.primary .button:focus, .button-group.clear .button.primary:hover, .button-group.clear .button.primary:focus {
+    color: rgb(11.5, 60.5, 93);
+}
+.button-group.clear.secondary .button, .button-group.clear.secondary .button.disabled, .button-group.clear.secondary .button[disabled], .button-group.clear.secondary .button.disabled:hover, .button-group.clear.secondary .button[disabled]:hover, .button-group.clear.secondary .button.disabled:focus, .button-group.clear.secondary .button[disabled]:focus, .button-group.clear .button.secondary, .button-group.clear .button.secondary.disabled, .button-group.clear .button.secondary[disabled], .button-group.clear .button.secondary.disabled:hover, .button-group.clear .button.secondary[disabled]:hover, .button-group.clear .button.secondary.disabled:focus, .button-group.clear .button.secondary[disabled]:focus {
+    color: #767676;
+}
+.button-group.clear.secondary .button:hover, .button-group.clear.secondary .button:focus, .button-group.clear .button.secondary:hover, .button-group.clear .button.secondary:focus {
+    color: #3b3b3b;
+}
+.button-group.clear.success .button, .button-group.clear.success .button.disabled, .button-group.clear.success .button[disabled], .button-group.clear.success .button.disabled:hover, .button-group.clear.success .button[disabled]:hover, .button-group.clear.success .button.disabled:focus, .button-group.clear.success .button[disabled]:focus, .button-group.clear .button.success, .button-group.clear .button.success.disabled, .button-group.clear .button.success[disabled], .button-group.clear .button.success.disabled:hover, .button-group.clear .button.success[disabled]:hover, .button-group.clear .button.success.disabled:focus, .button-group.clear .button.success[disabled]:focus {
+    color: #3adb76;
+}
+.button-group.clear.success .button:hover, .button-group.clear.success .button:focus, .button-group.clear .button.success:hover, .button-group.clear .button.success:focus {
+    color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
+}
+.button-group.clear.warning .button, .button-group.clear.warning .button.disabled, .button-group.clear.warning .button[disabled], .button-group.clear.warning .button.disabled:hover, .button-group.clear.warning .button[disabled]:hover, .button-group.clear.warning .button.disabled:focus, .button-group.clear.warning .button[disabled]:focus, .button-group.clear .button.warning, .button-group.clear .button.warning.disabled, .button-group.clear .button.warning[disabled], .button-group.clear .button.warning.disabled:hover, .button-group.clear .button.warning[disabled]:hover, .button-group.clear .button.warning.disabled:focus, .button-group.clear .button.warning[disabled]:focus {
+    color: #ffae00;
+}
+.button-group.clear.warning .button:hover, .button-group.clear.warning .button:focus, .button-group.clear .button.warning:hover, .button-group.clear .button.warning:focus {
+    color: rgb(127.5, 87, 0);
+}
+.button-group.clear.alert .button, .button-group.clear.alert .button.disabled, .button-group.clear.alert .button[disabled], .button-group.clear.alert .button.disabled:hover, .button-group.clear.alert .button[disabled]:hover, .button-group.clear.alert .button.disabled:focus, .button-group.clear.alert .button[disabled]:focus, .button-group.clear .button.alert, .button-group.clear .button.alert.disabled, .button-group.clear .button.alert[disabled], .button-group.clear .button.alert.disabled:hover, .button-group.clear .button.alert[disabled]:hover, .button-group.clear .button.alert.disabled:focus, .button-group.clear .button.alert[disabled]:focus {
+    color: global.$alert-color;
+}
+ .button-group.clear.alert .button:hover, .button-group.clear.alert .button:focus, .button-group.clear .button.alert:hover, .button-group.clear .button.alert:focus {
+    color: rgb(103.187250996, 36.6314741036, 26.312749004);
+}
+.button-group.no-gaps .button {
+    margin-right: -0.0625rem;
+}
+.button-group.no-gaps .button + .button {
+    border-left-color: transparent;
+}
+
+.button-group.stacked, .button-group.stacked-for-small, .button-group.stacked-for-medium {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.button-group.stacked .button, .button-group.stacked-for-small .button, .button-group.stacked-for-medium .button {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+}
+
+.button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
+    margin-bottom: 0;
+}
+
+.button-group.stacked.expanded .button, .button-group.stacked-for-small.expanded .button, .button-group.stacked-for-medium.expanded .button {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0px;
+            flex: 1 1 0px;
+}
+
+@media print, screen and (min-width: 40em) {
+    .button-group.stacked-for-small .button {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+      margin-bottom: 0;
+    }
+}
+
+@media print, screen and (min-width: 64em) {
+    .button-group.stacked-for-medium .button {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+      margin-bottom: 0;
+    }
+}
+
+@media print, screen and (max-width: 39.99875em) {
+    .button-group.stacked-for-small.expanded {
+      display: block;
+    }
+    .button-group.stacked-for-small.expanded .button {
+      display: block;
+      margin-right: 0;
+    }
+}
+
+@media print, screen and (max-width: 63.99875em) {
+    .button-group.stacked-for-medium.expanded {
+      display: block;
+    }
+    .button-group.stacked-for-medium.expanded .button {
+      display: block;
+      margin-right: 0;
+    }
+}
+
+// Forms
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-weight: global.$font-weight-bold;
+  line-height: global.$global-line-height;
+}
+
+.input-group {
+  display: flex;
+  width: 100%;
+  margin-bottom: global.$global-margin;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+.input-group > :first-child {
+  border-radius: global.$global-radius 0 0 global.$global-radius;
+}
+.input-group > :last-child > * {
+  border-radius: 0 global.$global-radius global.$global-radius 0;
+}
+
+.input-group-label {
+  padding: 0 1rem;
+  border: 1px solid global.$medium-gray;
+  background: global.$light-gray;
+  color: global.$dark-gray;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.input-group-field {
+  border: 1px solid global.$medium-gray;
+  height: 2.5rem;
+  flex: 1 1 auto;
+  width: 1%;
+}
+
+.input-group-button {
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+  display: flex;
+  flex: 0 0 auto;
+}
+.input-group-button a,
+.input-group-button input,
+.input-group-button button,
+.input-group-button label {
+  height: 2.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: global.$font-weight-normal;
+  line-height: global.$global-line-height;
+  color: global.$black;
+}
+
+input, textarea, select {
+  display: block;
+  width: 100%;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0.5rem;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  font-family: global.$body-font-family;
+  font-size: 1rem;
+  font-weight: global.$font-weight-normal;
+  line-height: global.$global-line-height;
+  color: global.$black;
+  transition: border-color 0.25s ease-in-out, box-shadow 0.5s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border: 1px solid global.$dark-gray;
+  background-color: global.$white;
+  box-shadow: 0 0 5px global.$medium-gray;
+}
+
+textarea { max-width: 100%; }
+textarea[rows] { height: auto; }
+
+input::placeholder, textarea::placeholder {
+  color: global.$medium-gray;
+}
+
+input:disabled, input[readonly], textarea:disabled, textarea[readonly] {
+  background-color: global.$light-gray;
+  cursor: not-allowed;
+}
+
+[type="checkbox"], [type="radio"] {
+  width: auto;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+select {
+  height: 2.5rem;
+  background: global.$white url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb(51,51,51)'></polygon></svg>") right -1rem center no-repeat;
+  background-size: 9px 6px;
+  padding-right: 1.5rem;
+  appearance: none;
+}
+
+// Tables
+
+table {
+  width: 100%;
+  margin-bottom: global.$global-margin;
+  border-radius: global.$global-radius;
+  border-collapse: collapse;
+  background-color: global.$white;
+}
+
+thead, tbody, tfoot {
+  border: 1px solid global.$light-gray;
+  background-color: global.$white;
+}
+
+th, td {
+  padding: 0.5rem 0.625rem;
+  font-family: global.$body-font-family;
+  line-height: global.$global-line-height;
+  text-align: left;
+}
+
+th {
+  font-weight: global.$font-weight-bold;
+  color: global.$dark-gray;
+}
+
+td { color: global.$black; }
+
+thead tr { background-color: global.$light-gray; }
+tbody tr:nth-child(even) { background-color: global.$table-stripe; }
+
+table.stack thead, table.stack tbody, table.stack tfoot {
+  border: 0;
+}
+table.stack th, table.stack td {
+  display: block;
+  width: 100%;
+  border-top: 1px solid global.$light-gray;
+}
+
+// Progress Bars
+
+.progress {
+  height: 1rem;
+  margin-bottom: global.$global-margin;
+  border-radius: global.$global-radius;
+  background-color: global.$light-gray;
+  overflow: hidden;
+}
+
+.progress-meter {
+  display: block;
+  width: 0;
+  height: 100%;
+  background-color: global.$primary-color;
+  transition: width 0.3s ease;
+}
+
+.progress-meter.secondary { background-color: global.$secondary-color; }
+.progress-meter.success { background-color: global.$success-color; }
+.progress-meter.warning { background-color: global.$warning-color; }
+.progress-meter.alert { background-color: global.$alert-color; }
+
+.meter {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 1rem;
+  background-color: global.$light-gray;
+  border-radius: global.$global-radius;
+  overflow: hidden;
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+  background-color: global.$primary-color;
+}
+
+.meter.secondary span { background-color: global.$secondary-color; }
+.meter.success span { background-color: global.$success-color; }
+.meter.warning span { background-color: global.$warning-color; }
+.meter.alert span { background-color: global.$alert-color; }
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2em;
+  line-height: 1;
+  color: global.$dark-gray;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.close-button:hover {
+  color: color.adjust(global.$dark-gray, $lightness: -10%);
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.is-visible {
+  display: block !important;
+}
+
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+.text-justify { text-align: justify !important; }
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-text-left { text-align: left !important; }
+  .medium-text-right { text-align: right !important; }
+  .medium-text-center { text-align: center !important; }
+  .medium-text-justify { text-align: justify !important; }
+}
+
+@media print, screen and (min-width: global.$large-breakpoint) {
+  .large-text-left { text-align: left !important; }
+  .large-text-right { text-align: right !important; }
+  .large-text-center { text-align: center !important; }
+  .large-text-justify { text-align: justify !important; }
+}
+
+.no-margin { margin: 0 !important; }
+.no-padding { padding: 0 !important; }
+
+
+// Callouts
+
+.callout {
+  margin: 0 0 global.$global-margin 0;
+  padding: global.$global-padding;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  color: global.$black;
+  position: relative;
+}
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+.callout.primary {
+  background-color: color.adjust(global.$primary-color, $lightness: 45%);
+  border-color: color.adjust(global.$primary-color, $lightness: 30%);
+  color: global.$black;
+}
+.callout.primary a {
+  color: global.$primary-color;
+}
+.callout.primary a:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+}
+
+.callout.secondary {
+    background-color: color.adjust(global.$secondary-color, $lightness: 45%);
+    border-color: color.adjust(global.$secondary-color, $lightness: 30%);
+    color: global.$black;
+}
+.callout.secondary a {
+  color: global.$secondary-color;
+}
+.callout.secondary a:hover {
+  color: color.adjust(global.$secondary-color, $lightness: -10%);
+}
+
+.callout.success {
+  background-color: color.adjust(global.$success-color, $lightness: 45%);
+  border-color: color.adjust(global.$success-color, $lightness: 30%);
+  color: global.$black;
+}
+.callout.success a {
+  color: global.$success-color;
+}
+.callout.success a:hover {
+  color: color.adjust(global.$success-color, $lightness: -10%);
+}
+
+.callout.warning {
+  background-color: color.adjust(global.$warning-color, $lightness: 45%);
+  border-color: color.adjust(global.$warning-color, $lightness: 30%);
+  color: global.$black;
+}
+.callout.warning a {
+  color: global.$warning-color;
+}
+.callout.warning a:hover {
+  color: color.adjust(global.$warning-color, $lightness: -10%);
+}
+
+.callout.alert {
+  background-color: color.adjust(global.$alert-color, $lightness: 45%);
+  border-color: color.adjust(global.$alert-color, $lightness: 30%);
+  color: global.$black;
+}
+.callout.alert a {
+  color: global.$alert-color;
+}
+.callout.alert a:hover {
+  color: color.adjust(global.$alert-color, $lightness: -10%);
+}
+
+.callout.small {
+  padding: 0.5rem;
+}
+
+.callout.large {
+  padding: 1.5rem;
+}
+
+.callout .close-button {
+  font-size: 1.5rem;
+  line-height: 1;
+  top: 0.25rem;
+  right: 0.5rem;
+}
+.callout .close-button:hover {
+  color: color.adjust(global.$dark-gray, $lightness: -10%);
+}
+
+// Cards
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: global.$global-margin;
+  border: 1px solid global.$light-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  overflow: hidden;
+}
+
+.card-divider {
+  padding: global.$global-padding;
+  background-color: global.$light-gray;
+  font-weight: global.$font-weight-bold;
+  line-height: global.$global-line-height;
+  color: global.$dark-gray;
+}
+
+.card-section {
+  padding: global.$global-padding;
+  flex: 1 0 auto;
+}
+.card-section:last-child {
+  margin-bottom: 0;
+}
+
+.card-image {
+  position: relative;
+}
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card.primary {
+  border-color: color.adjust(global.$primary-color, $lightness: 30%);
+  background-color: color.adjust(global.$primary-color, $lightness: 45%);
+}
+.card.primary .card-divider {
+  background-color: global.$primary-color;
+  color: global.$white;
+}
+.card.primary .card-section {
+  color: global.$black;
+}
+.card.primary a {
+  color: global.$primary-color;
+}
+.card.primary a:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+}
+
+.card.secondary {
+  border-color: color.adjust(global.$secondary-color, $lightness: 30%);
+  background-color: color.adjust(global.$secondary-color, $lightness: 45%);
+}
+.card.secondary .card-divider {
+  background-color: global.$secondary-color;
+  color: global.$white;
+}
+.card.secondary .card-section {
+  color: global.$black;
+}
+.card.secondary a {
+  color: global.$secondary-color;
+}
+.card.secondary a:hover {
+  color: color.adjust(global.$secondary-color, $lightness: -10%);
+}
+
+.card.success {
+  border-color: color.adjust(global.$success-color, $lightness: 30%);
+  background-color: color.adjust(global.$success-color, $lightness: 45%);
+}
+.card.success .card-divider {
+  background-color: global.$success-color;
+  color: global.$white;
+}
+.card.success .card-section {
+  color: global.$black;
+}
+.card.success a {
+  color: global.$success-color;
+}
+.card.success a:hover {
+  color: color.adjust(global.$success-color, $lightness: -10%);
+}
+
+.card.warning {
+  border-color: color.adjust(global.$warning-color, $lightness: 30%);
+  background-color: color.adjust(global.$warning-color, $lightness: 45%);
+}
+.card.warning .card-divider {
+  background-color: global.$warning-color;
+  color: global.$white;
+}
+.card.warning .card-section {
+  color: global.$black;
+}
+.card.warning a {
+  color: global.$warning-color;
+}
+.card.warning a:hover {
+  color: color.adjust(global.$warning-color, $lightness: -10%);
+}
+
+.card.alert {
+  border-color: color.adjust(global.$alert-color, $lightness: 30%);
+  background-color: color.adjust(global.$alert-color, $lightness: 45%);
+}
+.card.alert .card-divider {
+  background-color: global.$alert-color;
+  color: global.$white;
+}
+.card.alert .card-section {
+  color: global.$black;
+}
+.card.alert a {
+  color: global.$alert-color;
+}
+.card.alert a:hover {
+  color: color.adjust(global.$alert-color, $lightness: -10%);
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .card.medium-horizontal {
+    flex-direction: row;
+  }
+  .card.medium-horizontal .card-image {
+    flex: 0 0 30%;
+  }
+  .card.medium-horizontal .card-section {
+    flex: 1;
+  }
+}
+
+// Pagination
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination li {
+  margin: 0 0.125rem;
+  font-family: global.$body-font-family;
+  font-size: 1rem;
+  line-height: global.$global-line-height;
+}
+
+.pagination a,
+.pagination button {
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  color: global.$black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+.pagination a:hover,
+.pagination button:hover {
+  background-color: global.$light-gray;
+  color: color.adjust(global.$black, $lightness: -10%);
+}
+
+.pagination .current {
+  padding: 0.1875rem 0.625rem;
+  border: 1px solid global.$primary-color;
+  border-radius: global.$global-radius;
+  background-color: global.$primary-color;
+  color: global.$white;
+  font-weight: global.$font-weight-bold;
+}
+
+.pagination .disabled {
+  padding: 0.1875rem 0.625rem;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$light-gray;
+  color: global.$medium-gray;
+  cursor: not-allowed;
+}
+.pagination .disabled:hover {
+  background-color: global.$light-gray;
+  color: global.$medium-gray;
+}
+
+.pagination .ellipsis::after {
+  content: "…";
+  padding: 0.1875rem 0.625rem;
+  color: global.$dark-gray;
+}
+
+.pagination-previous a::before,
+.pagination-previous.disabled::before {
+  content: "« ";
+  margin-right: 0.25rem;
+}
+
+.pagination-next a::after,
+.pagination-next.disabled::after {
+  content: " »";
+  margin-left: 0.25rem;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .pagination.medium-large {
+    font-size: 1.25rem;
+  }
+  .pagination.medium-large a,
+  .pagination.medium-large button,
+  .pagination.medium-large .current,
+  .pagination.medium-large .disabled,
+  .pagination.medium-large .ellipsis::after {
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+.pagination.primary a,
+.pagination.primary button {
+  border-color: color.adjust(global.$primary-color, $lightness: 30%);
+}
+.pagination.primary a:hover,
+.pagination.primary button:hover {
+  background-color: color.adjust(global.$primary-color, $lightness: 45%);
+  color: global.$primary-color;
+}
+.pagination.primary .current {
+  border-color: global.$primary-color;
+  background-color: global.$primary-color;
+}
+.pagination.primary .disabled {
+  border-color: color.adjust(global.$primary-color, $lightness: 30%);
+  background-color: color.adjust(global.$primary-color, $lightness: 45%);
+  color: color.adjust(global.$primary-color, $lightness: 20%);
+}
+
+.pagination.secondary a,
+.pagination.secondary button {
+  border-color: color.adjust(global.$secondary-color, $lightness: 30%);
+}
+.pagination.secondary a:hover,
+.pagination.secondary button:hover {
+  background-color: color.adjust(global.$secondary-color, $lightness: 45%);
+  color: global.$secondary-color;
+}
+.pagination.secondary .current {
+  border-color: global.$secondary-color;
+  background-color: global.$secondary-color;
+}
+.pagination.secondary .disabled {
+  border-color: color.adjust(global.$secondary-color, $lightness: 30%);
+  background-color: color.adjust(global.$secondary-color, $lightness: 45%);
+  color: color.adjust(global.$secondary-color, $lightness: 20%);
+}
+
+// Breadcrumbs and Labels
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0;
+  list-style: none;
+  font-family: global.$body-font-family;
+  font-size: 0.875rem;
+  line-height: global.$global-line-height;
+}
+
+.breadcrumbs li {
+  margin: 0 0.5rem 0 0;
+  color: global.$dark-gray;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+  color: global.$medium-gray;
+}
+
+.breadcrumbs a {
+  color: global.$primary-color;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+}
+
+.breadcrumbs .current {
+  color: global.$black;
+  font-weight: global.$font-weight-bold;
+}
+
+.breadcrumbs .disabled {
+  color: global.$medium-gray;
+  cursor: not-allowed;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .breadcrumbs {
+    font-size: 1rem;
+  }
+}
+
+.label {
+  display: inline-block;
+  padding: 0.33333rem 0.5rem;
+  border-radius: global.$global-radius;
+  background-color: global.$light-gray;
+  color: global.$dark-gray;
+  font-family: global.$body-font-family;
+  font-size: 0.75rem;
+  font-weight: global.$font-weight-bold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.label.primary {
+  background-color: global.$primary-color;
+  color: global.$white;
+}
+.label.primary a {
+  color: global.$white;
+}
+.label.primary a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+}
+
+.label.secondary {
+  background-color: global.$secondary-color;
+  color: global.$white;
+}
+.label.secondary a {
+  color: global.$white;
+}
+.label.secondary a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+}
+
+.label.success {
+  background-color: global.$success-color;
+  color: global.$white;
+}
+.label.success a {
+  color: global.$white;
+}
+.label.success a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+}
+
+.label.warning {
+  background-color: global.$warning-color;
+  color: global.$white;
+}
+.label.warning a {
+  color: global.$white;
+}
+.label.warning a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+}
+
+.label.alert {
+  background-color: global.$alert-color;
+  color: global.$white;
+}
+.label.alert a {
+  color: global.$white;
+}
+.label.alert a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .label.medium-large {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+// Dropdown Menus and Badges
+.dropdown.menu {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: global.$body-font-family;
+  line-height: global.$global-line-height;
+}
+
+.dropdown.menu > li {
+  position: relative;
+  margin: 0;
+}
+
+.dropdown.menu > li > a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: global.$primary-color;
+  text-decoration: none;
+}
+.dropdown.menu > li > a:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+.dropdown.menu .is-dropdown-submenu-parent > a::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  border-top: 0.3rem solid;
+  border-right: 0.3rem solid transparent;
+  border-left: 0.3rem solid transparent;
+}
+
+.dropdown.menu .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  z-index: 10;
+}
+
+.dropdown.menu .is-active > .submenu,
+.dropdown.menu .submenu.is-open {
+  display: block;
+}
+
+.dropdown.menu .submenu li a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: global.$black;
+  text-decoration: none;
+}
+.dropdown.menu .submenu li a:hover {
+  background-color: global.$light-gray;
+  color: color.adjust(global.$black, $lightness: -10%);
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .dropdown.menu.medium-horizontal {
+    display: flex;
+  }
+}
+
+.badge {
+  display: inline-block;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.3rem;
+  border-radius: 50%;
+  background-color: global.$dark-gray;
+  color: global.$white;
+  font-family: global.$body-font-family;
+  font-size: 0.75rem;
+  font-weight: global.$font-weight-bold;
+  line-height: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.badge.primary {
+  background-color: global.$primary-color;
+}
+.badge.secondary {
+  background-color: global.$secondary-color;
+}
+.badge.success {
+  background-color: global.$success-color;
+}
+.badge.warning {
+  background-color: global.$warning-color;
+}
+.badge.alert {
+  background-color: global.$alert-color;
+}
+
+.badge.large {
+  min-width: 2rem;
+  height: 2rem;
+  font-size: 0.875rem;
+  line-height: 2rem;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .badge.medium-small {
+    min-width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.625rem;
+    line-height: 1.25rem;
+  }
+}
+
+// Tabs and Tooltips
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid global.$medium-gray;
+}
+
+.tabs-title {
+  margin: 0;
+}
+
+.tabs-title > a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-family: global.$body-font-family;
+  font-size: global.$tabs-font-size;
+  line-height: 1;
+  color: global.$dark-gray;
+  text-decoration: none;
+}
+.tabs-title > a:hover {
+  color: color.adjust(global.$dark-gray, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+.tabs-title.is-active > a,
+.tabs-title > a[aria-selected="true"] {
+  border-bottom: 2px solid global.$primary-color;
+  color: global.$primary-color;
+  background-color: global.$white;
+}
+
+.tabs-content {
+  border: 1px solid global.$medium-gray;
+  border-top: none;
+  background-color: global.$white;
+}
+
+.tabs-panel {
+  display: none;
+  padding: global.$global-padding;
+}
+.tabs-panel.is-active {
+  display: block;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .tabs.medium-vertical {
+    flex-direction: column;
+    border-bottom: none;
+    border-right: 1px solid global.$medium-gray;
+  }
+  .tabs.medium-vertical .tabs-title > a {
+    border-bottom: none;
+    border-right: 2px solid transparent;
+  }
+  .tabs.medium-vertical .tabs-title.is-active > a,
+  .tabs.medium-vertical .tabs-title > a[aria-selected="true"] {
+    border-right: 2px solid global.$primary-color;
+  }
+  .tabs-content.medium-vertical {
+    border-top: 1px solid global.$medium-gray;
+    border-left: none;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  display: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: global.$global-radius;
+  background-color: global.$dark-gray;
+  color: global.$white;
+  font-family: global.$body-font-family;
+  font-size: global.$tooltip-font-size;
+  line-height: 1;
+  text-align: center;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.tooltip.show {
+  display: block;
+}
+
+.tooltip.top::before,
+.tooltip.bottom::before,
+.tooltip.left::before,
+.tooltip.right::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0.5rem solid transparent;
+}
+
+.tooltip.top {
+  margin-top: -0.5rem;
+}
+.tooltip.top::before {
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: global.$dark-gray;
+}
+
+.tooltip.bottom {
+  margin-top: 0.5rem;
+}
+.tooltip.bottom::before {
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: global.$dark-gray;
+}
+
+.tooltip.left {
+  margin-left: -0.5rem;
+}
+.tooltip.left::before {
+  right: -0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: global.$dark-gray;
+}
+
+.tooltip.right {
+  margin-left: 0.5rem;
+}
+.tooltip.right::before {
+  left: -0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: global.$dark-gray;
+}
+
+// Accordions and Switches
+
+.accordion {
+  margin: 0 0 global.$global-margin 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+}
+
+.accordion-item {
+  border-bottom: 1px solid global.$medium-gray;
+}
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-title {
+  position: relative;
+  display: block;
+  padding: 1rem;
+  font-family: global.$body-font-family;
+  font-size: 1rem;
+  line-height: global.$global-line-height;
+  color: global.$primary-color;
+  text-decoration: none;
+  cursor: pointer;
+}
+.accordion-title:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+.accordion-title::before {
+  content: "+";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.is-active > .accordion-title::before {
+  content: "−";
+}
+
+.accordion-content {
+  display: none;
+  padding: global.$global-padding;
+  border-top: 1px solid global.$medium-gray;
+  background-color: global.$white;
+  color: global.$black;
+}
+.accordion-content.is-active {
+  display: block;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .accordion.medium-compact .accordion-title {
+    padding: 0.75rem;
+  }
+  .accordion.medium-compact .accordion-content {
+    padding: 0.75rem;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+  margin-bottom: global.$global-margin;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-paddle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: global.$global-radius;
+  background-color: global.$medium-gray;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.switch-paddle::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  left: 0.25rem;
+  top: 0.25rem;
+  border-radius: 50%;
+  background-color: global.$white;
+  transition: transform 0.25s ease;
+}
+
+.switch input:checked + .switch-paddle {
+  background-color: global.$primary-color;
+}
+.switch input:checked + .switch-paddle::after {
+  transform: translateX(1.5rem);
+}
+
+.switch-paddle:hover {
+  background-color: color.adjust(global.$medium-gray, $lightness: -10%);
+}
+.switch input:checked + .switch-paddle:hover {
+  background-color: color.adjust(global.$primary-color, $lightness: -10%);
+}
+
+.switch.small {
+  width: 2rem;
+  height: 1rem;
+}
+.switch.small .switch-paddle::after {
+  width: 0.75rem;
+  height: 0.75rem;
+  left: 0.125rem;
+  top: 0.125rem;
+}
+.switch.small input:checked + .switch-paddle::after {
+  transform: translateX(1rem);
+}
+
+.switch.large {
+  width: 4rem;
+  height: 2rem;
+}
+.switch.large .switch-paddle::after {
+  width: 1.5rem;
+  height: 1.5rem;
+  left: 0.25rem;
+  top: 0.25rem;
+}
+.switch.large input:checked + .switch-paddle::after {
+  transform: translateX(2rem);
+}
+
+// Modals and Thumbnails
+
+.reveal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(10, 10, 10, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  z-index: 100;
+  transition: opacity 0.3s ease;
+}
+.reveal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal {
+  position: relative;
+  display: none;
+  margin: global.$global-margin auto;
+  padding: global.$global-padding;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  width: 90%;
+  max-width: global.$grid-container-width;
+  z-index: 101;
+}
+.reveal.is-active {
+  display: block;
+}
+
+.reveal.tiny {
+  max-width: 20rem;
+}
+.reveal.small {
+  max-width: 30rem;
+}
+.reveal.large {
+  max-width: 60rem;
+}
+
+.reveal .close-button {
+  font-size: 1.5rem;
+  line-height: 1;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.reveal .close-button:hover {
+  color: color.adjust(global.$dark-gray, $lightness: -10%);
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .reveal {
+    width: 80%;
+  }
+  .reveal.medium-full {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+}
+
+.thumbnail {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: global.$global-margin;
+  border: 1px solid global.$light-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  line-height: 0;
+  transition: box-shadow 0.2s ease;
+}
+.thumbnail:hover {
+  box-shadow: global.$thumbnail-hover-shadow;
+}
+
+.thumbnail img {
+  border-radius: global.$global-radius;
+}
+
+.thumbnail.primary {
+  border-color: color.adjust(global.$primary-color, $lightness: 30%);
+}
+.thumbnail.primary:hover {
+  box-shadow: 0 0 6px 1px color.adjust(global.$primary-color, $alpha: -0.5);
+}
+
+.thumbnail.secondary {
+  border-color: color.adjust(global.$secondary-color, $lightness: 30%);
+}
+.thumbnail.secondary:hover {
+  box-shadow: 0 0 6px 1px color.adjust(global.$secondary-color, $alpha: -0.5);
+}
+
+.thumbnail.success {
+  border-color: color.adjust(global.$success-color, $lightness: 30%);
+}
+.thumbnail.success:hover {
+  box-shadow: 0 0 6px 1px color.adjust(global.$success-color, $alpha: -0.5);
+}
+
+.thumbnail.warning {
+  border-color: color.adjust(global.$warning-color, $lightness: 30%);
+}
+.thumbnail.warning:hover {
+  box-shadow: 0 0 6px 1px color.adjust(global.$warning-color, $alpha: -0.5);
+}
+
+.thumbnail.alert {
+  border-color: color.adjust(global.$alert-color, $lightness: 30%);
+}
+.thumbnail.alert:hover {
+  box-shadow: 0 0 6px 1px color.adjust(global.$alert-color, $alpha: -0.5);
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .thumbnail.medium-square {
+    width: 10rem;
+    height: 10rem;
+  }
+  .thumbnail.medium-square img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Media Objects and Top Bars
+
+.media-object {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: global.$global-margin;
+}
+
+.media-object-section {
+  flex: 1;
+  padding: 0 global.$global-padding;
+}
+.media-object-section:first-child {
+  padding-left: 0;
+}
+.media-object-section:last-child {
+  padding-right: 0;
+}
+
+.media-object-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.media-object-section.main-section {
+  flex: 2;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .media-object.medium-stack {
+    flex-direction: column;
+  }
+  .media-object.medium-stack .media-object-section {
+    padding: global.$global-padding 0;
+  }
+  .media-object.medium-stack .media-object-section:first-child {
+    padding-top: 0;
+  }
+  .media-object.medium-stack .media-object-section:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: global.$top-bar-padding;
+  background-color: global.$dark-gray;
+  color: global.$white;
+}
+
+.top-bar-title {
+  margin: 0 global.$global-margin 0 0;
+  font-weight: global.$font-weight-bold;
+  line-height: global.$global-line-height;
+}
+.top-bar-title a {
+  color: global.$white;
+  text-decoration: none;
+}
+.top-bar-title a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+}
+
+.top-bar-left,
+.top-bar-right {
+  flex: 1 0 0;
+}
+
+.top-bar-right {
+  text-align: right;
+}
+
+.top-bar .menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: transparent;
+}
+
+.top-bar .menu li {
+  margin: 0;
+}
+
+.top-bar .menu a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: global.$white;
+  text-decoration: none;
+}
+.top-bar .menu a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+  background-color: color.adjust(global.$dark-gray, $lightness: 10%);
+}
+
+@media print, screen and (max-width: calc(global.$medium-breakpoint - 0.001em)) {
+  .top-bar .menu {
+    width: 100%;
+    justify-content: center;
+  }
+  .top-bar-left,
+  .top-bar-right {
+    flex: none;
+    width: 100%;
+    text-align: center;
+  }
+  .top-bar-title {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+// Menus and Orbit
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0;
+  list-style: none;
+  font-family: global.$body-font-family;
+  line-height: global.$global-line-height;
+}
+
+.menu li {
+  margin: 0;
+}
+
+.menu a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: global.$primary-color;
+  text-decoration: none;
+}
+.menu a:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+.menu.vertical {
+  flex-direction: column;
+}
+
+.menu.simple li {
+  padding: 0 0.5rem;
+}
+.menu.simple a {
+  padding: 0;
+}
+
+.menu.nested {
+  margin-left: global.$global-margin;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .menu.medium-horizontal {
+    flex-direction: row;
+  }
+  .menu.medium-expanded {
+    justify-content: space-between;
+  }
+}
+
+.orbit {
+  position: relative;
+  margin-bottom: global.$global-margin;
+}
+
+.orbit-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.orbit-slide {
+  display: none;
+  width: 100%;
+}
+.orbit-slide.is-active {
+  display: block;
+}
+
+.orbit-slide img {
+  width: 100%;
+  height: auto;
+}
+
+.orbit-bullets {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orbit-bullets button {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0 0.25rem;
+  border: none;
+  border-radius: 50%;
+  background-color: global.$medium-gray;
+  cursor: pointer;
+}
+.orbit-bullets button:hover {
+  background-color: color.adjust(global.$medium-gray, $lightness: -10%);
+}
+.orbit-bullets button.is-active {
+  background-color: global.$primary-color;
+}
+
+.orbit-previous,
+.orbit-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: rgba(10, 10, 10, 0.5);
+  color: global.$white;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.orbit-previous:hover,
+.orbit-next:hover {
+  background-color: rgba(10, 10, 10, 0.7);
+}
+
+.orbit-previous {
+  left: 0;
+}
+.orbit-next {
+  right: 0;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .orbit-bullets button {
+    width: 1rem;
+    height: 1rem;
+  }
+  .orbit-previous,
+  .orbit-next {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
+
+// Responsive Embeds and Sticky Elements
+.responsive-embed {
+  position: relative;
+  width: 100%;
+  height: 0;
+  margin-bottom: global.$global-margin;
+  padding-bottom: 56.25%; /* Default 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+.responsive-embed.widescreen {
+  padding-bottom: 56.25%; /* 16:9 */
+}
+.responsive-embed.standard {
+  padding-bottom: 75%; /* 4:3 */
+}
+.responsive-embed.vertical {
+  padding-bottom: 177.78%; /* 9:16 */
+}
+
+.responsive-embed iframe,
+.responsive-embed video,
+.responsive-embed embed,
+.responsive-embed object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .responsive-embed.medium-square {
+    padding-bottom: 100%; /* 1:1 */
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sticky-container {
+  position: relative;
+}
+
+[data-sticky] {
+  width: 100%;
+}
+
+.is-stuck {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.sticky-top-bar {
+  background-color: global.$dark-gray;
+  padding: global.$top-bar-padding;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.sticky-top-bar .menu a {
+  color: global.$white;
+}
+.sticky-top-bar .menu a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+  background-color: color.adjust(global.$dark-gray, $lightness: 10%);
+}
+
+.sticky-nav {
+  background-color: global.$white;
+  border-bottom: 1px solid global.$medium-gray;
+  padding: 0.5rem 1rem;
+}
+.sticky-nav .menu a {
+  color: global.$primary-color;
+}
+.sticky-nav .menu a:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .sticky.medium-offset {
+    top: 1rem;
+  }
+  .sticky-top-bar.medium-compact {
+    padding: 0.25rem;
+  }
+  .sticky-nav.medium-compact {
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+@media print, screen and (max-width: calc(global.$medium-breakpoint - 0.001em)) {
+  .sticky-top-bar .menu,
+  .sticky-nav .menu {
+    justify-content: center;
+  }
+}
+
+// Title Bars and Off-Canvas
+
+.title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: global.$top-bar-padding;
+  background-color: global.$dark-gray;
+  color: global.$white;
+}
+
+.title-bar-title {
+  margin: 0;
+  font-weight: global.$font-weight-bold;
+  line-height: global.$global-line-height;
+}
+.title-bar-title a {
+  color: global.$white;
+  text-decoration: none;
+}
+.title-bar-title a:hover {
+  color: color.adjust(global.$white, $lightness: -10%);
+}
+
+.title-bar-left,
+.title-bar-right {
+  flex: 1 0 auto;
+}
+
+.title-bar-right {
+  text-align: right;
+}
+
+.title-bar .menu-icon {
+  display: block;
+  width: 1.25rem;
+  height: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+.title-bar .menu-icon::before,
+.title-bar .menu-icon::after,
+.title-bar .menu-icon span {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  background-color: global.$white;
+  transition: all 0.3s ease;
+}
+.title-bar .menu-icon::before {
+  top: 0;
+}
+.title-bar .menu-icon span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.title-bar .menu-icon::after {
+  bottom: 0;
+}
+.title-bar .menu-icon:hover::before,
+.title-bar .menu-icon:hover::after,
+.title-bar .menu-icon:hover span {
+  background-color: color.adjust(global.$white, $lightness: -10%);
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .title-bar.medium-compact {
+    padding: 0.25rem;
+  }
+}
+
+.off-canvas {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 15rem;
+  background-color: global.$white;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+.off-canvas.is-open {
+  transform: translateX(0);
+}
+
+.off-canvas.position-right {
+  right: 0;
+  left: auto;
+  transform: translateX(100%);
+}
+.off-canvas.position-right.is-open {
+  transform: translateX(0);
+}
+
+.off-canvas-content {
+  transition: transform 0.3s ease;
+}
+
+.is-off-canvas-open .off-canvas-content {
+  transform: translateX(15rem);
+}
+.is-off-canvas-open .off-canvas.position-right ~ .off-canvas-content {
+  transform: translateX(-15rem);
+}
+
+.off-canvas .menu {
+  margin: 0;
+  padding: global.$global-padding;
+}
+.off-canvas .menu a {
+  color: global.$black;
+}
+.off-canvas .menu a:hover {
+  color: color.adjust(global.$black, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+.off-canvas .close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: global.$dark-gray;
+}
+.off-canvas .close-button:hover {
+  color: color.adjust(global.$dark-gray, $lightness: -10%);
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .off-canvas.medium-wide {
+    width: 20rem;
+  }
+  .is-off-canvas-open .off-canvas.medium-wide ~ .off-canvas-content {
+    transform: translateX(20rem);
+  }
+  .is-off-canvas-open .off-canvas.position-right.medium-wide ~ .off-canvas-content {
+    transform: translateX(-20rem);
+  }
+}
+
+// Drilldowns and Magellan
+
+.drilldown {
+  position: relative;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  background-color: global.$white;
+  transition: max-height 0.3s ease;
+}
+
+.drilldown.is-drilldown-open {
+  max-height: 100vh; /* Adjust based on content */
+  overflow-y: auto;
+}
+
+.drilldown .menu {
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+}
+
+.drilldown .menu a {
+  padding: 0.75rem 1rem;
+  color: global.$black;
+  border-bottom: 1px solid global.$light-gray;
+}
+.drilldown .menu a:hover {
+  color: color.adjust(global.$black, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+.drilldown .menu .is-drilldown-submenu-parent > a::after {
+  content: "›";
+  float: right;
+  margin-left: 0.5rem;
+}
+
+.drilldown .menu .is-drilldown-submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  background-color: global.$white;
+  transition: transform 0.3s ease;
+}
+
+.drilldown .menu .is-active > .is-drilldown-submenu {
+  display: block;
+  transform: translateX(-100%);
+}
+
+.drilldown .back {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: global.$primary-color;
+  border-bottom: 1px solid global.$light-gray;
+  cursor: pointer;
+}
+.drilldown .back::before {
+  content: "‹ ";
+}
+.drilldown .back:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .drilldown.medium-compact .menu a,
+  .drilldown.medium-compact .back {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+.magellan {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0;
+  list-style: none;
+  background-color: global.$white;
+  border-bottom: 1px solid global.$medium-gray;
+}
+
+.magellan li {
+  margin: 0;
+}
+
+.magellan a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: global.$dark-gray;
+  text-decoration: none;
+}
+.magellan a:hover {
+  color: color.adjust(global.$dark-gray, $lightness: -10%);
+  background-color: global.$light-gray;
+}
+
+.magellan [data-magellan-target].active a {
+  color: global.$primary-color;
+  border-bottom: 2px solid global.$primary-color;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .magellan.medium-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .magellan.medium-expanded {
+    justify-content: space-between;
+  }
+}
+
+@media print, screen and (max-width: calc(global.$medium-breakpoint - 0.001em)) {
+  .magellan {
+    flex-direction: column;
+    border-bottom: none;
+    border: 1px solid global.$medium-gray;
+  }
+  .magellan a {
+    border-bottom: 1px solid global.$medium-gray;
+  }
+  .magellan [data-magellan-target].active a {
+    border-bottom: 1px solid global.$primary-color;
+  }
+}
+
+// Float Classes and Enhanced Visibility
+
+.float-left-small {
+  float: left !important;
+}
+.float-right-small {
+  float: right !important;
+}
+.float-center-small {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.float-none-small {
+  float: none !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .float-left-medium {
+    float: left !important;
+  }
+  .float-right-medium {
+    float: right !important;
+  }
+  .float-center-medium {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .float-none-medium {
+    float: none !important;
+  }
+}
+
+@media print, screen and (min-width: global.$large-breakpoint) {
+  .float-left-large {
+    float: left !important;
+  }
+  .float-right-large {
+    float: right !important;
+  }
+  .float-center-large {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .float-none-large {
+    float: none !important;
+  }
+}
+
+.clearfix-small::before,
+.clearfix-small::after {
+  display: table;
+  content: " ";
+}
+.clearfix-small::after {
+  clear: both;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .clearfix-medium::before,
+  .clearfix-medium::after {
+    display: table;
+    content: " ";
+  }
+  .clearfix-medium::after {
+    clear: both;
+  }
+}
+
+.show-for-xlarge {
+  display: none;
+}
+@media print, screen and (min-width: global.$xlarge-breakpoint) {
+  .show-for-xlarge {
+    display: inherit !important;
+  }
+}
+
+.hide-for-xlarge {
+  display: inherit !important;
+}
+@media print, screen and (min-width: global.$xlarge-breakpoint) {
+  .hide-for-xlarge {
+    display: none !important;
+  }
+}
+
+.show-for-xxlarge {
+  display: none;
+}
+@media print, screen and (min-width: global.$xxlarge-breakpoint) {
+  .show-for-xxlarge {
+    display: inherit !important;
+  }
+}
+
+.hide-for-xxlarge {
+  display: inherit !important;
+}
+@media print, screen and (min-width: global.$xxlarge-breakpoint) {
+  .hide-for-xxlarge {
+    display: none !important;
+  }
+}
+
+.show-for-xlarge-only {
+  display: none;
+}
+@media print, screen and (min-width: global.$xlarge-breakpoint) and (max-width: calc(global.$xxlarge-breakpoint - 0.001em)) {
+  .show-for-xlarge-only {
+    display: inherit !important;
+  }
+}
+
+.hide-for-xlarge-only {
+  display: inherit !important;
+}
+@media print, screen and (min-width: global.$xlarge-breakpoint) and (max-width: calc(global.$xxlarge-breakpoint - 0.001em)) {
+  .hide-for-xlarge-only {
+    display: none !important;
+  }
+}
+
+.show-for-landscape {
+  display: inherit !important;
+}
+@media (orientation: portrait) {
+  .show-for-landscape {
+    display: none !important;
+  }
+}
+
+.hide-for-landscape {
+  display: none !important;
+}
+@media (orientation: portrait) {
+  .hide-for-landscape {
+    display: inherit !important;
+  }
+}
+
+.show-for-portrait {
+  display: inherit !important;
+}
+@media (orientation: landscape) {
+  .show-for-portrait {
+    display: none !important;
+  }
+}
+
+.hide-for-portrait {
+  display: none !important;
+}
+@media (orientation: landscape) {
+  .hide-for-portrait {
+    display: inherit !important;
+  }
+}
+
+// Flex Helpers and Typography Utilities
+
+.flex-container {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.flex-grow-0 {
+  flex-grow: 0;
+}
+.flex-grow-1 {
+  flex-grow: 1;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+.flex-shrink-1 {
+  flex-shrink: 1;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+.justify-space-around {
+  justify-content: space-around;
+}
+.justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+.align-items-end {
+  align-items: flex-end;
+}
+.align-items-center {
+  align-items: center;
+}
+.align-items-baseline {
+  align-items: baseline;
+}
+.align-items-stretch {
+  align-items: stretch;
+}
+
+.align-self-start {
+  align-self: flex-start;
+}
+.align-self-end {
+  align-self: flex-end;
+}
+.align-self-center {
+  align-self: center;
+}
+.align-self-baseline {
+  align-self: baseline;
+}
+.align-self-stretch {
+  align-self: stretch;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-flex-row {
+    flex-direction: row;
+  }
+  .medium-flex-column {
+    flex-direction: column;
+  }
+  .medium-justify-center {
+    justify-content: center;
+  }
+  .medium-align-items-center {
+    align-items: center;
+  }
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-bold {
+  font-weight: global.$font-weight-bold;
+}
+.text-normal {
+  font-weight: global.$font-weight-normal;
+}
+.text-light {
+  font-weight: global.$font-weight-light;
+}
+
+.text-italic {
+  font-style: italic;
+}
+.text-normal-style {
+  font-style: normal;
+}
+
+.text-small {
+  font-size: global.$small-font-size;
+}
+.text-tiny {
+  font-size: global.$tiny-font-size;
+}
+.text-large {
+  font-size: global.$h3-font-size;
+}
+
+.text-muted {
+  color: global.$medium-gray;
+}
+.text-primary {
+  color: global.$primary-color;
+}
+.text-primary:hover {
+  color: color.adjust(global.$primary-color, $lightness: -10%);
+}
+.text-secondary {
+  color: global.$secondary-color;
+}
+.text-secondary:hover {
+  color: color.adjust(global.$secondary-color, $lightness: -10%);
+}
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-text-large {
+    font-size: global.$h2-font-size;
+  }
+  .medium-text-center {
+    text-align: center;
+  }
+}
+
+//Spacing and Border Utilities
+
+.margin-0 {
+  margin: 0 !important;
+}
+.margin-1 {
+  margin: global.$global-margin !important;
+}
+.margin-2 {
+  margin: global.$global-margin * 2 !important;
+}
+.margin-half {
+  margin: math.div(global.$global-margin, 2) !important;
+}
+
+.margin-top-0 {
+  margin-top: 0 !important;
+}
+.margin-top-1 {
+  margin-top: global.$global-margin !important;
+}
+.margin-bottom-1 {
+  margin-bottom: global.$global-margin !important;
+}
+.margin-left-1 {
+  margin-left: global.$global-margin !important;
+}
+.margin-right-1 {
+  margin-right: global.$global-margin !important;
+}
+
+.padding-0 {
+  padding: 0 !important;
+}
+.padding-1 {
+  padding: global.$global-padding !important;
+}
+.padding-2 {
+  padding: global.$global-padding * 2 !important;
+}
+.padding-half {
+  padding: math.div(global.$global-padding, 2) !important;
+}
+
+.padding-top-0 {
+  padding-top: 0 !important;
+}
+.padding-top-1 {
+  padding-top: global.$global-padding !important;
+}
+.padding-bottom-1 {
+  padding-bottom: global.$global-padding !important;
+}
+.padding-left-1 {
+  padding-left: global.$global-padding !important;
+}
+.padding-right-1 {
+  padding-right: global.$global-padding !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-margin-0 {
+    margin: 0 !important;
+  }
+  .medium-margin-1 {
+    margin: global.$global-margin !important;
+  }
+  .medium-padding-0 {
+    padding: 0 !important;
+  }
+  .medium-padding-1 {
+    padding: global.$global-padding !important;
+  }
+}
+
+.border-0 {
+  border: 0 !important;
+}
+.border-1 {
+  border: 1px solid global.$medium-gray !important;
+}
+.border-2 {
+  border: 2px solid global.$medium-gray !important;
+}
+
+.border-top-1 {
+  border-top: 1px solid global.$medium-gray !important;
+}
+.border-bottom-1 {
+  border-bottom: 1px solid global.$medium-gray !important;
+}
+.border-left-1 {
+  border-left: 1px solid global.$medium-gray !important;
+}
+.border-right-1 {
+  border-right: 1px solid global.$medium-gray !important;
+}
+
+.border-primary {
+  border-color: color.adjust(global.$primary-color, $lightness: 30%) !important;
+}
+.border-secondary {
+  border-color: color.adjust(global.$secondary-color, $lightness: 30%) !important;
+}
+.border-success {
+  border-color: color.adjust(global.$success-color, $lightness: 30%) !important;
+}
+.border-warning {
+  border-color: color.adjust(global.$warning-color, $lightness: 30%) !important;
+}
+.border-alert {
+  border-color: color.adjust(global.$alert-color, $lightness: 30%) !important;
+}
+
+.border-round {
+  border-radius: global.$global-radius !important;
+}
+.border-circle {
+  border-radius: 50% !important;
+}
+.border-none {
+  border-radius: 0 !important;
+}
+
+.border-dashed {
+  border-style: dashed !important;
+}
+.border-dotted {
+  border-style: dotted !important;
+}
+.border-solid {
+  border-style: solid !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-border-0 {
+    border: 0 !important;
+  }
+  .medium-border-1 {
+    border: 1px solid global.$medium-gray !important;
+  }
+  .medium-border-round {
+    border-radius: global.$global-radius !important;
+  }
+}
+
+// Background and Shadow Utilities
+
+.bg-none {
+  background: none !important;
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+.bg-white {
+  background-color: global.$white !important;
+}
+.bg-light-gray {
+  background-color: global.$light-gray !important;
+}
+.bg-medium-gray {
+  background-color: global.$medium-gray !important;
+}
+.bg-dark-gray {
+  background-color: global.$dark-gray !important;
+}
+.bg-black {
+  background-color: global.$black !important;
+}
+
+.bg-primary {
+  background-color: global.$primary-color !important;
+}
+.bg-primary:hover {
+  background-color: color.adjust(global.$primary-color, $lightness: -10%) !important;
+}
+.bg-secondary {
+  background-color: global.$secondary-color !important;
+}
+.bg-secondary:hover {
+  background-color: color.adjust(global.$secondary-color, $lightness: -10%) !important;
+}
+.bg-success {
+  background-color: global.$success-color !important;
+}
+.bg-success:hover {
+  background-color: color.adjust(global.$success-color, $lightness: -10%) !important;
+}
+.bg-warning {
+  background-color: global.$warning-color !important;
+}
+.bg-warning:hover {
+  background-color: color.adjust(global.$warning-color, $lightness: -10%) !important;
+}
+.bg-alert {
+  background-color: global.$alert-color !important;
+}
+.bg-alert:hover {
+  background-color: color.adjust(global.$alert-color, $lightness: -10%) !important;
+}
+
+.bg-primary-light {
+  background-color: color.adjust(global.$primary-color, $lightness: 45%) !important;
+}
+.bg-secondary-light {
+  background-color: color.adjust(global.$secondary-color, $lightness: 45%) !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-bg-none {
+    background: none !important;
+  }
+  .medium-bg-primary {
+    background-color: global.$primary-color !important;
+  }
+  .medium-bg-primary:hover {
+    background-color: color.adjust(global.$primary-color, $lightness: -10%) !important;
+  }
+}
+
+.shadow-none {
+  box-shadow: none !important;
+}
+.shadow-small {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+.shadow-medium {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+.shadow-large {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.shadow-primary {
+  box-shadow: 0 2px 4px color.adjust(global.$primary-color, $alpha: -0.5) !important;
+}
+.shadow-primary:hover {
+  box-shadow: 0 4px 8px color.adjust(global.$primary-color, $alpha: -0.4) !important;
+}
+.shadow-secondary {
+  box-shadow: 0 2px 4px color.adjust(global.$secondary-color, $alpha: -0.5) !important;
+}
+.shadow-secondary:hover {
+  box-shadow: 0 4px 8px color.adjust(global.$secondary-color, $alpha: -0.4) !important;
+}
+.shadow-success {
+  box-shadow: 0 2px 4px color.adjust(global.$success-color, $alpha: -0.5) !important;
+}
+.shadow-success:hover {
+  box-shadow: 0 4px 8px color.adjust(global.$success-color, $alpha: -0.4) !important;
+}
+.shadow-warning {
+  box-shadow: 0 2px 4px color.adjust(global.$warning-color, $alpha: -0.5) !important;
+}
+.shadow-warning:hover {
+  box-shadow: 0 4px 8px color.adjust(global.$warning-color, $alpha: -0.4) !important;
+}
+.shadow-alert {
+  box-shadow: 0 2px 4px color.adjust(global.$alert-color, $alpha: -0.5) !important;
+}
+.shadow-alert:hover {
+  box-shadow: 0 4px 8px color.adjust(global.$alert-color, $alpha: -0.4) !important;
+}
+
+.shadow-inset {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-shadow-none {
+    box-shadow: none !important;
+  }
+  .medium-shadow-medium {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+// Position and Z-Index Utilities
+
+.position-static {
+  position: static !important;
+}
+.position-relative {
+  position: relative !important;
+}
+.position-absolute {
+  position: absolute !important;
+}
+.position-fixed {
+  position: fixed !important;
+}
+.position-sticky {
+  position: sticky !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+.top-1 {
+  top: global.$global-margin !important;
+}
+.bottom-0 {
+  bottom: 0 !important;
+}
+.bottom-1 {
+  bottom: global.$global-margin !important;
+}
+.left-0 {
+  left: 0 !important;
+}
+.left-1 {
+  left: global.$global-margin !important;
+}
+.right-0 {
+  right: 0 !important;
+}
+.right-1 {
+  right: global.$global-margin !important;
+}
+
+.top-auto {
+  top: auto !important;
+}
+.bottom-auto {
+  bottom: auto !important;
+}
+.left-auto {
+  left: auto !important;
+}
+.right-auto {
+  right: auto !important;
+}
+
+.position-full {
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-position-static {
+    position: static !important;
+  }
+  .medium-position-relative {
+    position: relative !important;
+  }
+  .medium-top-0 {
+    top: 0 !important;
+  }
+  .medium-left-1 {
+    left: global.$global-margin !important;
+  }
+}
+
+.z-0 {
+  z-index: 0 !important;
+}
+.z-10 {
+  z-index: 10 !important;
+}
+.z-20 {
+  z-index: 20 !important;
+}
+.z-30 {
+  z-index: 30 !important;
+}
+.z-40 {
+  z-index: 40 !important;
+}
+.z-50 {
+  z-index: 50 !important;
+}
+
+.z-auto {
+  z-index: auto !important;
+}
+
+.z-modal {
+  z-index: 100 !important;
+}
+.z-sticky {
+  z-index: 10 !important;
+}
+.z-dropdown {
+  z-index: 20 !important;
+}
+.z-tooltip {
+  z-index: 30 !important;
+}
+.z-overlay {
+  z-index: 90 !important;
+}
+
+.z-negative {
+  z-index: -1 !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-z-0 {
+    z-index: 0 !important;
+  }
+  .medium-z-20 {
+    z-index: 20 !important;
+  }
+  .medium-z-modal {
+    z-index: 100 !important;
+  }
+}
+
+@media print, screen and (min-width: global.$large-breakpoint) {
+  .large-z-0 {
+    z-index: 0 !important;
+  }
+  .large-z-30 {
+    z-index: 30 !important;
+  }
+}
+
+// Width/Height and Overflow Utilities
+
+.w-0 {
+  width: 0 !important;
+}
+.w-25 {
+  width: 25% !important;
+}
+.w-50 {
+  width: 50% !important;
+}
+.w-75 {
+  width: 75% !important;
+}
+.w-100 {
+  width: 100% !important;
+}
+
+.w-auto {
+  width: auto !important;
+}
+.w-full-vw {
+  width: 100vw !important;
+}
+
+.w-1rem {
+  width: 1rem !important;
+}
+.w-2rem {
+  width: 2rem !important;
+}
+.w-global {
+  width: global.$global-margin !important;
+}
+
+.h-0 {
+  height: 0 !important;
+}
+.h-25 {
+  height: 25% !important;
+}
+.h-50 {
+  height: 50% !important;
+}
+.h-75 {
+  height: 75% !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+
+.h-auto {
+  height: auto !important;
+}
+.h-full-vh {
+  height: 100vh !important;
+}
+
+.h-1rem {
+  height: 1rem !important;
+}
+.h-2rem {
+  height: 2rem !important;
+}
+.h-global {
+  height: global.$global-margin !important;
+}
+
+.max-w-100 {
+  max-width: 100% !important;
+}
+.max-w-none {
+  max-width: none !important;
+}
+.max-h-100 {
+  max-height: 100% !important;
+}
+.max-h-none {
+  max-height: none !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-w-50 {
+    width: 50% !important;
+  }
+  .medium-w-100 {
+    width: 100% !important;
+  }
+  .medium-h-50 {
+    height: 50% !important;
+  }
+  .medium-h-100 {
+    height: 100% !important;
+  }
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+}
+.overflow-visible {
+  overflow: visible !important;
+}
+.overflow-scroll {
+  overflow: scroll !important;
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+.overflow-x-scroll {
+  overflow-x: scroll !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+.overflow-y-scroll {
+  overflow-y: scroll !important;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-overflow-auto {
+    overflow: auto !important;
+  }
+  .medium-overflow-hidden {
+    overflow: hidden !important;
+  }
+  .medium-overflow-y-scroll {
+    overflow-y: scroll !important;
+  }
+}
+
+// Display Utilities, Cursor Utilities, Enhanced Pagination
+
+// Segment 1: Display Utilities
+.display-none {
+  display: none !important;
+}
+.display-block {
+  display: block !important;
+}
+.display-inline {
+  display: inline !important;
+}
+.display-inline-block {
+  display: inline-block !important;
+}
+.display-flex {
+  display: flex !important;
+}
+.display-inline-flex {
+  display: inline-flex !important;
+}
+.display-table {
+  display: table !important;
+}
+.display-table-cell {
+  display: table-cell !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-display-none {
+    display: none !important;
+  }
+  .medium-display-block {
+    display: block !important;
+  }
+  .medium-display-flex {
+    display: flex !important;
+  }
+}
+
+@media print, screen and (min-width: global.$large-breakpoint) {
+  .large-display-none {
+    display: none !important;
+  }
+  .large-display-inline-block {
+    display: inline-block !important;
+  }
+}
+
+// Segment 2: Cursor Utilities
+.cursor-auto {
+  cursor: auto !important;
+}
+.cursor-default {
+  cursor: default !important;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+.cursor-wait {
+  cursor: wait !important;
+}
+.cursor-text {
+  cursor: text !important;
+}
+.cursor-move {
+  cursor: move !important;
+}
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+.cursor-zoom-in {
+  cursor: zoom-in !important;
+}
+.cursor-zoom-out {
+  cursor: zoom-out !important;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .medium-cursor-pointer {
+    cursor: pointer !important;
+  }
+  .medium-cursor-not-allowed {
+    cursor: not-allowed !important;
+  }
+}
+
+// Segment 3: Enhanced Pagination
+.pagination-enhanced {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 global.$global-margin 0;
+  padding: 0;
+  list-style: none;
+  font-family: global.$body-font-family;
+}
+
+.pagination-enhanced li {
+  margin: 0 0.25rem;
+}
+
+.pagination-enhanced a,
+.pagination-enhanced button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid global.$medium-gray;
+  border-radius: global.$global-radius;
+  background-color: global.$white;
+  color: global.$black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.pagination-enhanced a:hover,
+.pagination-enhanced button:hover {
+  background-color: global.$light-gray;
+  color: color.adjust(global.$black, $lightness: -10%);
+  border-color: color.adjust(global.$medium-gray, $lightness: -10%);
+}
+
+.pagination-enhanced .current {
+  background-color: global.$primary-color;
+  border-color: global.$primary-color;
+  color: global.$white;
+  font-weight: global.$font-weight-bold;
+}
+
+.pagination-enhanced .disabled {
+  background-color: global.$light-gray;
+  border-color: global.$medium-gray;
+  color: global.$medium-gray;
+  cursor: not-allowed;
+}
+.pagination-enhanced .disabled:hover {
+  background-color: global.$light-gray;
+  color: global.$medium-gray;
+  border-color: global.$medium-gray;
+}
+
+.pagination-enhanced .ellipsis::after {
+  content: "…";
+  display: block;
+  text-align: center;
+  line-height: 2rem;
+  color: global.$dark-gray;
+}
+
+.pagination-enhanced .pagination-previous a::before,
+.pagination-enhanced .pagination-previous.disabled::before {
+  content: "«";
+  margin-right: 0.25rem;
+}
+.pagination-enhanced .pagination-next a::after,
+.pagination-enhanced .pagination-next.disabled::after {
+  content: "»";
+  margin-left: 0.25rem;
+}
+
+@media print, screen and (min-width: global.$medium-breakpoint) {
+  .pagination-enhanced a,
+  .pagination-enhanced button,
+  .pagination-enhanced .current,
+  .pagination-enhanced .disabled,
+  .pagination-enhanced .ellipsis::after {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    font-size: 1.125rem;
+  }
+  .pagination-enhanced .ellipsis::after {
+    line-height: 2.5rem;
+  }
+}
