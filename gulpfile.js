@@ -8,8 +8,6 @@ const cleanCSS = require('gulp-clean-css');
 const postcss = require('gulp-postcss');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
-const clean = require('gulp-clean');
-const path = require('path');
 
 const paths = {
   scss: 'assets/styles/scss/**/*.scss',
