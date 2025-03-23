@@ -1,0 +1,80 @@
+@use "variables" as vars;
+
+.hamburger {
+  padding: vars.$hamburger-padding-y vars.$hamburger-padding-x;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+
+  &:hover {
+    @if vars.$hamburger-hover-use-filter == true {
+      filter: vars.$hamburger-hover-filter;
+    } @else {
+      opacity: vars.$hamburger-hover-opacity;
+    }
+  }
+
+  &.is-active {
+    &:hover {
+      @if vars.$hamburger-hover-use-filter == true {
+        filter: vars.$hamburger-active-hover-filter;
+      } @else {
+        opacity: vars.$hamburger-active-hover-opacity;
+      }
+    }
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      background-color: vars.$hamburger-active-layer-color;
+    }
+  }
+}
+
+.hamburger-box {
+  width: vars.$hamburger-layer-width;
+  height: vars.$hamburger-layer-height + vars.$hamburger-layer-spacing + vars.$hamburger-layer-height;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: calc(vars.$hamburger-layer-height / -2);
+
+  &,
+  &::before,
+  &::after {
+    width: vars.$hamburger-layer-width;
+    height: vars.$hamburger-layer-height;
+    background-color: vars.$hamburger-layer-color;
+    border-radius: vars.$hamburger-layer-border-radius;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+  }
+
+  &::before {
+    top: calc((vars.$hamburger-layer-spacing + vars.$hamburger-layer-height) * -1);
+  }
+
+  &::after {
+    bottom: calc((vars.$hamburger-layer-spacing + vars.$hamburger-layer-height) * -1);
+  }
+}

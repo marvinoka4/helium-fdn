@@ -1,0 +1,33 @@
+@use '../util/functions' as u;
+@use "sass:color";
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use '../global/settings' as global;
+
+@use "./hamburgers/variables" as vars with (
+  $hamburger-padding-x: 0px,
+  $hamburger-padding-y: 0px,
+  $hamburger-layer-width: 40px,
+  $hamburger-layer-height: 4px,
+  $hamburger-layer-spacing: 6px,
+  $hamburger-layer-color: global.$primary,
+  $hamburger-layer-border-radius: 4px,
+  $hamburger-hover-opacity: 0.7,
+  $hamburger-active-layer-color: global.$secondary,
+  $hamburger-active-hover-opacity: 0.7,
+  $hamburger-hover-use-filter: false,
+  $hamburger-hover-filter: opacity(50%),
+  $hamburger-active-hover-filter: opacity(50%),
+  $hamburger-types: (
+    3dx, 3dx-r, 3dy, 3dy-r, 3dxy, 3dxy-r,
+    arrow, arrow-r, arrowalt, arrowalt-r,
+    arrowturn, arrowturn-r, boring, collapse,
+    collapse-r, elastic, elastic-r, emphatic,
+    emphatic-r, minus, slider, slider-r,
+    spin, spin-r, spring, spring-r, stand,
+    stand-r, squeeze, vortex, vortex-r
+  )
+);
+
+@use "./hamburgers/hamburgers";
