@@ -1,0 +1,11 @@
+.entry-content a,
+.comment-content a,
+.widget a {
+    text-decoration: underline;
+    color: #0000EE; /* Ensure sufficient contrast */
+}
+.entry-content a:hover,
+.comment-content a:hover,
+.widget a:hover {
+    text-decoration: none; /* Optional: Remove underline on hover for style */
+}

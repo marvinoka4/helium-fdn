@@ -3039,6 +3039,17 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   animation-duration: 250ms !important;
 }
 
+
+.widget a {
+  text-decoration: underline;
+  color: #0000EE; /* Ensure sufficient contrast */
+}
+
+
+.widget a:hover {
+  text-decoration: none; /* Optional: Remove underline on hover for style */
+}
+
 .header {
   padding-block: 14px;
   background: var(--color-light);
