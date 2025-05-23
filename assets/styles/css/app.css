@@ -856,13 +856,13 @@ ul {
 .button.tertiary[disabled]:hover,
 .button.tertiary.disabled:focus,
 .button.tertiary[disabled]:focus {
-  background-color: #7a0ee5;
+  background-color: #AA4B89;
   color: #fefefe;
 }
 
 .button.tertiary:hover,
 .button.tertiary:focus {
-  background-color: rgb(96.3950617284, 11.0617283951, 180.9382716049);
+  background-color: rgb(134.612244898, 59.387755102, 108.4816326531);
   color: #fefefe;
 }
 
@@ -873,13 +873,13 @@ ul {
 .button.accent[disabled]:hover,
 .button.accent.disabled:focus,
 .button.accent[disabled]:focus {
-  background-color: #e7f300;
+  background-color: #FFD700;
   color: #0a0a0a;
 }
 
 .button.accent:hover,
 .button.accent:focus {
-  background-color: rgb(182.5185185185, 192, 0);
+  background-color: #ccac00;
   color: #0a0a0a;
 }
 
@@ -1473,7 +1473,7 @@ select:not([multiple]) {
 }
 
 .callout.accent {
-  background-color: rgb(253.1481481481, 255, 217.5);
+  background-color: rgb(255, 251, 229.5);
   color: #0a0a0a;
 }
 
